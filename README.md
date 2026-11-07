@@ -26,6 +26,20 @@ Người mới nhận việc đọc `BAN_GIAO.md` trước (quy tắc, thiết k
 | `data/`, `models/`, `backup/` | Dữ liệu trích từ kho, mô hình đã học, bản sao lưu kho | Chỉ `models/*.json` |
 | `tai_lieu_mon_hoc/` | Slide môn học | Không |
 
+## Chạy nhanh bằng script
+
+`chay.sh` (macOS, Linux) và `chay.bat` (Windows) gom các bước dưới đây thành lệnh:
+
+```bash
+./chay.sh caidat      # tạo .venv và cài thư viện
+./chay.sh phan_tich   # chuỗi phân tích cum3b -> cum6b (cần data/*.csv, bỏ qua cum4 nếu đã có models/)
+./chay.sh bao_cao     # sinh bảng, hình rồi biên dịch latex/main.pdf
+./chay.sh app         # mở giao diện DSS
+./chay.sh tat_ca      # cả ba bước đầu
+```
+
+Trên Windows gõ `chay caidat`, `chay app`... Bước dựng kho bằng SQL vẫn làm tay theo mục dưới.
+
 ## Chạy lại từ đầu
 
 1. **Kho dữ liệu.** Có CSDL nguồn `CompanyX` trên SQL Server, tạo CSDL rỗng `CompanyX_DW`, chạy các file trong `sql/` theo thứ tự ở `docs/README_THU_TU_CHAY.txt`, rồi `sql/4_Cum1b_Schema_DSS_DE_XUAT.sql`. Hoặc restore `backup/CompanyX_DW_after_C3A_20261101.bak` (đã xong tới cụm 3A). Kiểm bằng `sql/VERIFY_STATE.sql`.
