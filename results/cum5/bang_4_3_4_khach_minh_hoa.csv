@@ -1,0 +1,4 @@
+CustomerID,Recency,Frequency,Monetary,RiskScore,RiskPercentile,RiskLevel,TreeScore,Flag,TopFactors
+12201,180,2,64.289,0.993339,100.0,Cao,0.897933,0,"Lá 1: Recency <= 275.50 AND Monetary <= 4640.88 AND BikeBuyer <= 0.50 AND Monetary <= 150.94 | nhóm 6054 khách, tỷ lệ không mua lại 89.9%, TreeScore 0.898"
+26339,186,2,4923.3161,0.962913,99.747,Cao,0.585679,1,"Lá 5: Recency <= 275.50 AND Monetary > 4640.88 AND Monetary <= 4960.65 | nhóm 440 khách, tỷ lệ không mua lại 55.9%, TreeScore 0.586"
+26774,508,1,865.204,0.049316,0.009,Thấp,0.248899,0,"Lá 8: Recency > 275.50 AND Tenure <= 744.00 AND Monetary <= 1684.87 | nhóm 420 khách, tỷ lệ không mua lại 18.1%, TreeScore 0.249"

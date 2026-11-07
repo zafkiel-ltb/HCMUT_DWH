@@ -1,0 +1,164 @@
+{
+ "nhan180": {
+  "so_moc": 13,
+  "moc_dau": "01/06/2013",
+  "moc_cuoi": "01/12/2013",
+  "y90": 0.8079,
+  "y180": 0.5963,
+  "chua_den_ky": 0.2617,
+  "NB_AUC90": 0.6937,
+  "NB_AUC180": 0.7521,
+  "Rec_AUC90": 0.6927,
+  "Rec_AUC180": 0.7589,
+  "Tree_AUC90": 0.6527,
+  "Tree_AUC180": 0.6781,
+  "moc_0106": {
+   "mot_don": 1.0,
+   "bike": 1.0,
+   "nsub1": 1.0
+  }
+ },
+ "tuong_quan": {
+  "so_cap_cao": 8,
+  "cap_cao": [
+   [
+    "Share_Bikes",
+    "BikeBuyer",
+    0.87
+   ],
+   [
+    "Share_Bikes",
+    "Share_Accessories",
+    -0.87
+   ],
+   [
+    "Recency",
+    "Orders90",
+    -0.85
+   ],
+   [
+    "Recency",
+    "Orders180",
+    -0.83
+   ],
+   [
+    "Monetary",
+    "BikeBuyer",
+    0.81
+   ],
+   [
+    "Monetary",
+    "Tenure",
+    0.76
+   ],
+   [
+    "Share_Accessories",
+    "BikeBuyer",
+    -0.76
+   ],
+   [
+    "Tenure",
+    "Share_Bikes",
+    0.72
+   ]
+  ],
+  "moc": [
+   "2013-09-01",
+   "2013-10-01",
+   "2013-11-01",
+   "2013-11-15",
+   "2014-03-01"
+  ]
+ },
+ "cramer": [
+  [
+   "Monetary",
+   "BikeBuyer",
+   0.92,
+   0.91,
+   0.98
+  ],
+  [
+   "Frequency",
+   "NSub",
+   0.52,
+   0.49,
+   0.69
+  ],
+  [
+   "Frequency",
+   "Monetary",
+   0.47,
+   0.51,
+   0.42
+  ]
+ ],
+ "tap_thuoc_tinh": {
+  "Thiết kế: R, F, M, BikeBuyer, NSub": {
+   "AUC": 0.7199,
+   "Brier": 0.1252,
+   "Z": 291883,
+   "DK": "4/4/4",
+   "chenh_Z": 0
+  },
+  "Bỏ NSub": {
+   "AUC": 0.7005,
+   "Brier": 0.1326,
+   "Z": 289306,
+   "DK": "0/4/4",
+   "chenh_Z": -2577
+  },
+  "Bỏ BikeBuyer": {
+   "AUC": 0.7289,
+   "Brier": 0.1237,
+   "Z": 291053,
+   "DK": "4/4/4",
+   "chenh_Z": -830
+  },
+  "Bỏ Frequency": {
+   "AUC": 0.7249,
+   "Brier": 0.1245,
+   "Z": 291340,
+   "DK": "4/4/4",
+   "chenh_Z": -543
+  },
+  "Bỏ Monetary": {
+   "AUC": 0.7221,
+   "Brier": 0.1235,
+   "Z": 289869,
+   "DK": "4/4/4",
+   "chenh_Z": -2014
+  },
+  "Chỉ R, F, M": {
+   "AUC": 0.7083,
+   "Brier": 0.1312,
+   "Z": 287457,
+   "DK": "2/4/4",
+   "chenh_Z": -4426
+  },
+  "Thêm Tenure (tứ phân vị)": {
+   "AUC": 0.7323,
+   "Brier": 0.1305,
+   "Z": 283791,
+   "DK": "4/4/4",
+   "chenh_Z": -8093
+  },
+  "Thêm Orders180 (0, 1, ≥ 2)": {
+   "AUC": 0.7272,
+   "Brier": 0.1366,
+   "Z": 280668,
+   "DK": "4/4/4",
+   "chenh_Z": -11215
+  }
+ },
+ "nsub": {
+  "AUC_bo": 0.7005,
+  "Brier_bo": 0.1326,
+  "Z_bo": 289306,
+  "chenh_Z": -2577,
+  "AUC_tk": 0.7199,
+  "Brier_tk": 0.1252,
+  "Z_tk": 291883,
+  "imp_cay": 0.0
+ }
+}

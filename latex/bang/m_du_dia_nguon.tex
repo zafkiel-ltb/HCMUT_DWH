@@ -1,0 +1,10 @@
+\begin{tabular}{p{6.6cm}rrrc}
+\toprule
+Mô hình & ROC-AUC & Brier & $Z$ (USD) & Mốc có $Z$ cao hơn Naive Bayes \\
+\midrule
+Naive Bayes rời rạc (đang dùng) & 0,720 & 0,125 & 291.883 & 0/4 \\
+Gradient boosting, 11 thuộc tính, trọng số dịch chuyển & 0,755 & 0,129 & 284.604 & 0/4 \\
+Gradient boosting, thêm nhân khẩu học và hành vi theo đơn & 0,811 & 0,121 & 289.916 & 1/4 \\
+Trung bình Naive Bayes và gradient boosting đủ thuộc tính & 0,822 & 0,114 & 292.149 & 3/4 \\
+\bottomrule
+\end{tabular}

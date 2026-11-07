@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, font=\small, minimum height=0.9cm},
+  cert/.style={-{Stealth[length=2mm]}}]
+  \node[box, text width=2.2cm, minimum height=2.2cm] (u) at (0,0) {Người dùng};
+  \node[box, text width=3.0cm, minimum height=2.2cm] (m) at (5.2,0) {Phân hệ giao diện\\(quản lý hội thoại)};
+  \node[box, text width=2.8cm] (d) at (10.6,1.4) {Phân hệ dữ liệu};
+  \node[box, text width=2.8cm] (mo) at (10.6,0) {Phân hệ mô hình};
+  \node[box, text width=2.8cm] (t) at (10.6,-1.4) {Phân hệ tri thức};
+  \draw[cert] ([yshift=0.45cm]u.east) -- node[above, font=\scriptsize, text width=2.6cm, align=center] {ngôn ngữ hành động: chọn mốc, lọc, nhập tham số, duyệt} ([yshift=0.45cm]m.west);
+  \draw[cert] ([yshift=-0.45cm]m.west) -- node[below, font=\scriptsize, text width=2.6cm, align=center] {ngôn ngữ hiển thị: thẻ chỉ số, biểu đồ, bảng, danh sách} ([yshift=-0.45cm]u.east);
+  \draw[cert, <->, {Stealth[length=2mm]}-{Stealth[length=2mm]}] (m.east) -- (d.west);
+  \draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (m.east) -- (mo.west);
+  \draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (m.east) -- (t.west);
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrrcc}
+\toprule
+Tập thuộc tính & ROC-AUC & Brier & $Z$ (USD) & Chênh $Z$ & Số fold $Z$ cao hơn & ĐK1 \\
+\midrule
+Thiết kế: R, F, M, BikeBuyer, NSub & 0,720 & 0,125 & 291.883 & -- & -- & 4/4 \\
+Bỏ NSub & 0,701 & 0,133 & 289.306 & $-$2.577 & 0/4 & 0/4 \\
+Bỏ BikeBuyer & 0,729 & 0,124 & 291.053 & $-$830 & 1/4 & 4/4 \\
+Bỏ Frequency & 0,725 & 0,124 & 291.340 & $-$543 & 2/4 & 4/4 \\
+Bỏ Monetary & 0,722 & 0,123 & 289.869 & $-$2.014 & 2/4 & 4/4 \\
+Chỉ R, F, M & 0,708 & 0,131 & 287.457 & $-$4.426 & 0/4 & 2/4 \\
+Thêm Tenure & 0,732 & 0,131 & 283.791 & $-$8.093 & 1/4 & 4/4 \\
+Thêm Orders180 & 0,727 & 0,137 & 280.668 & $-$11.215 & 0/4 & 4/4 \\
+\bottomrule
+\end{tabular}

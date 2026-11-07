@@ -1,0 +1,15 @@
+\begin{tabular}{lrrrccc}
+\toprule
+Mô hình & ROC-AUC & Brier & $Z$ (USD) & ĐK1 & ĐK2 & ĐK3 \\
+\midrule
+Naive Bayes rời rạc & 0,720 & 0,125 & 291.883 & 4/4 & 4/4 & 4/4 \\
+Mạng nơ-ron MLP (32, 16) & 0,751 & 0,128 & 288.379 & 4/4 & 4/4 & 4/4 \\
+Cây Gini (sâu 4, 400 khách mỗi lá) & 0,680 & 0,140 & 281.490 & 1/4 & 3/4 & 4/4 \\
+Hồi quy logistic & 0,659 & 0,151 & 273.406 & 1/4 & 2/4 & 2/4 \\
+Recency đảo chiều & 0,717 & 0,269 & 253.315 & 4/4 & 0/4 & 1/4 \\
+Luôn dự đoán lớp đa số & 0,500 & 0,149 & 269.043 & 0/4 & 0/4 & 0/4 \\
+Random Forest (300 cây) & 0,724 & 0,131 & 288.179 & 3/4 & 4/4 & 4/4 \\
+Gradient boosting & 0,741 & 0,131 & 283.224 & 4/4 & 4/4 & 4/4 \\
+kNN ($k=200$) & 0,741 & 0,131 & 283.557 & 4/4 & 4/4 & 4/4 \\
+\bottomrule
+\end{tabular}

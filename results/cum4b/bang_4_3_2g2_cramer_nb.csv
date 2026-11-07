@@ -1,0 +1,11 @@
+thuoc_tinh_1,thuoc_tinh_2,V_toan_bo,V_trong_y1,V_trong_y0
+Monetary,BikeBuyer,0.923,0.912,0.982
+Frequency,NSub,0.521,0.491,0.689
+Frequency,Monetary,0.471,0.506,0.418
+Recency,BikeBuyer,0.381,0.251,0.685
+Frequency,BikeBuyer,0.333,0.418,0.18
+Monetary,NSub,0.331,0.359,0.393
+Recency,Monetary,0.32,0.218,0.512
+Recency,NSub,0.318,0.223,0.444
+BikeBuyer,NSub,0.243,0.331,0.391
+Recency,Frequency,0.22,0.16,0.443

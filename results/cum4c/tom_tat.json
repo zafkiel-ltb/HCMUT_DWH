@@ -1,0 +1,19 @@
+{
+ "AUC_NB": 0.7199,
+ "AUC_GB_du": 0.811,
+ "AUC_trung_binh": 0.8223,
+ "Brier_NB": 0.1252,
+ "Brier_trung_binh": 0.1144,
+ "Z_NB": 291883,
+ "Z_trung_binh": 292149,
+ "Z_20000_NB": 164678,
+ "Z_20000_trung_binh": 180656,
+ "tran_5": 293907,
+ "tran_8": 308532,
+ "tran_nhan": 346378,
+ "ty_le_dat_tran_5": 0.9931,
+ "phan_ngau_nhien": 0.6945,
+ "lift_decile1_moc_cuoi": 1.1167,
+ "lift_toi_da": 1.22,
+ "so_khach_nhan_khau": 18484
+}

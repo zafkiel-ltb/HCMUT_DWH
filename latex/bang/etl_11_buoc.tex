@@ -1,0 +1,17 @@
+\begin{tabular}{rlp{4.0cm}rrrr}
+\toprule
+Bước & Tên bước & Việc làm & Nguồn & Nạp & Loại & Từ chối \\
+\midrule
+1 & \texttt{Extract.Customer} & Trích bảng khách hàng và họ tên vào staging & 19.820 & 19.820 & 0 & 0 \\
+2 & \texttt{Extract.Product} & Trích sản phẩm cùng danh mục con và danh mục & 504 & 504 & 0 & 0 \\
+3 & \texttt{Extract.Territory} & Trích vùng bán hàng & 10 & 10 & 0 & 0 \\
+4 & \texttt{Extract.Order} & Trích đầu đơn hàng, chưa lọc & 31.465 & 31.465 & 0 & 0 \\
+5 & \texttt{Extract.OrderLine} & Trích dòng chi tiết đơn, chưa lọc & 121.317 & 121.317 & 0 & 0 \\
+6 & \texttt{Load.DimCustomer} & Cập nhật và bổ sung khách cá nhân & 19.820 & 18.484 & 1.336 & 0 \\
+7 & \texttt{Load.DimProduct} & Cập nhật và bổ sung sản phẩm & 504 & 504 & 0 & 0 \\
+8 & \texttt{Load.DimTerritory} & Cập nhật và bổ sung vùng & 10 & 10 & 0 & 0 \\
+9 & \texttt{Load.DimDate} & Sinh lịch liên tục theo ngày đặt & 1.127 & 1.127 & 0 & 0 \\
+10 & \texttt{Load.FactSalesOrder} & Kiểm tra rồi nạp đơn đã gửi của khách cá nhân & 31.465 & 27.382 & 4.083 & 0 \\
+11 & \texttt{Load.FactSalesOrderLine} & Nạp dòng chi tiết của các đơn đã nạp & 121.317 & 59.795 & 61.522 & 0 \\
+\bottomrule
+\end{tabular}

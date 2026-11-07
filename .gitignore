@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+data/*.csv
+backup/*.bak
+models/*.joblib
+.DS_Store
+.env
+sandbox/
+
+# Chỉ giữ trên máy, không đưa lên git
+tai_lieu_mon_hoc/
+latex/main.pdf
+*.zip

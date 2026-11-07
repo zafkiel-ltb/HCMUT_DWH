@@ -1,0 +1,6 @@
+quy_tac,A,B,support,confidence,lift,co_trong_ket_qua_Apriori,hang_trong_moi_luat,hang_trong_luat_goi_y,support_theo_don,confidence_theo_don,lift_theo_don
+R6,Touring Bikes,Helmets,0.0569,0.4925,1.532,True,94,10,0.0322,0.4116,1.768
+R6b,Touring Bikes,Bottles and Cages,0.0417,0.3608,1.472,True,101,12,0.0199,0.2548,1.479
+R7,Mountain Bikes,Fenders,0.0485,0.2189,1.921,True,61,4,0.0325,0.1809,2.354
+R8,Gloves,Helmets,0.0371,0.4985,1.551,True,89,9,0.0218,0.4197,1.803
+R8b,Hydration Packs,Bottles and Cages,0.0192,0.4986,2.034,True,53,3,0.0119,0.4529,2.63

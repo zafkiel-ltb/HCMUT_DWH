@@ -1,0 +1,148 @@
+% Chương Đánh giá và hạn chế
+% Số liệu lấy từ Chương 3 (kho, ETL), Chương 5 (mô hình), Chương 6 (DSS) và results/cum4c (dư địa cải tiến).
+% Chương này chỉ giữ phần đối chiếu và phần mới (bốn cách chọn khách, lift, dư địa), không kể lại kết quả của Chương 5 và 6.
+\section{Đánh giá và hạn chế}
+
+Chương này đối chiếu ba thành phần đã xây dựng với tiêu chí đặt ra từ trước và với khung lý thuyết của tài liệu môn học~\cite{tlmh}: kho dữ liệu cùng ETL (7.1), mô hình dự đoán (7.2) và DSS (7.3). Mục 7.4 tổng hợp hạn chế và hướng cải tiến.
+
+\subsection{Kho dữ liệu và ETL}
+Chất lượng dữ liệu được đánh giá theo sáu chiều ở mục~\ref{sec:ltetl}. Bảng~\ref{tab:sauchieu} đối chiếu các nhóm kiểm tra ở Chương 3 (Bảng~\ref{tab:kt44} và~\ref{tab:kt21}) với sáu chiều này.
+
+\begin{table}[!htbp]
+\centering
+\caption{Đánh giá kho dữ liệu \texttt{CompanyX\_DW} theo sáu chiều chất lượng dữ liệu}
+\label{tab:sauchieu}
+\footnotesize
+\begin{tabular}{p{1.9cm}p{4.2cm}p{6.0cm}p{2.1cm}}
+\toprule
+Chiều & Phép kiểm tra tương ứng & Kết quả & Mức đáp ứng \\
+\midrule
+Đầy đủ & Số lượng bản ghi, mã định danh nguồn, giá trị thiếu trong Snapshot & 8/8 và 8/8 đạt (Bảng~\ref{tab:kt44}), 21/21 đạt (Bảng~\ref{tab:kt21}) & Đạt \\
+Duy nhất & Khoá trùng trong kho, bản ghi trùng theo cặp khách và mốc & Nhóm khoá và quan hệ 6/6 đạt, 21/21 đạt ở Snapshot & Đạt \\
+Kịp thời & Snapshot chỉ dùng dữ liệu trước mốc, cửa sổ nhãn kết thúc trước 01/06/2014 & Chưa có phép kiểm tra tự động riêng. Tháng 6/2014 có 930 đơn nhưng không có đơn xe đạp nào, được nhận ra khi khảo sát dữ liệu & Một phần \\
+Hợp lệ & Loại khách, trạng thái đơn, ngày, giá, số lượng, mã ánh xạ, bản ghi bất thường & 8/8 và 6/6 đạt. 6 đơn và 75 dòng chi tiết ngoài phạm vi được ghi vào \texttt{etl.\allowbreak RejectedRow} & Đạt \\
+Chính xác & Đối chiếu tổng tiền hàng và tổng tiền đơn giữa nguồn và kho & 4/4 đạt. 29.052.549,9450 và 32.103.068,4755 khớp ở cả hai cơ sở dữ liệu & Đạt khi so với nguồn \\
+Nhất quán & Liên kết giữa bảng sự kiện và bảng chiều, quan hệ giữa các thành phần giá trị đơn & Nhóm khoá và quan hệ 6/6 đạt, không sai lệch quá 0,01 & Đạt \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Năm trong sáu chiều có phép kiểm tra trực tiếp và đều đạt: 44/44 phép kiểm tra sau ETL và 21/21 phép kiểm tra Snapshot không có lỗi. Kết quả nạp khớp phạm vi đã định: trong 19.820 bản ghi khách, 18.484 khách cá nhân được nạp và 1.336 bản ghi ngoài phạm vi bị loại. Hai điểm cần nói rõ. Tính chính xác mới kiểm ở mức kho khớp nguồn, vì nhóm không có nguồn độc lập để đối chiếu, nên nếu nguồn sai thì kho sai theo. Tính kịp thời chưa có phép kiểm tra tự động, nhóm xử lý gián tiếp bằng cách chỉ dùng dữ liệu trước mốc khi tạo Snapshot và dừng cửa sổ nhãn trước 01/06/2014 (hướng cải tiến ở mục~\ref{sec:hanche}).
+
+\subsection{Mô hình dự đoán}
+Chương 5 đã chọn Naive Bayes theo ba điều kiện trên bốn fold theo thời gian (Bảng~\ref{tab:trungbinh}). Mục này không kể lại kết quả đó mà trả lời ba câu hỏi còn mở: mô hình có đáng dùng hơn một quy tắc đơn giản không, chỉ số nào phản ánh đúng cách DSS dùng mô hình, và mô hình còn cách mức tốt nhất bao xa.
+
+\subsubsection{So với quy tắc đơn giản}
+Về xếp hạng, Naive Bayes gần như không hơn quy tắc Recency đảo chiều (ROC-AUC trung bình bốn mốc 0,720 so với 0,717). Nguyên nhân nằm ở dữ liệu nhiều hơn ở mô hình: 69,3\% khách tại mốc 01/03/2014 mới chỉ mua một đơn, nên thời gian từ lần mua gần nhất gần như là toàn bộ tín hiệu có trong dữ liệu giao dịch. Mạng nơ-ron dùng đủ 11 thuộc tính cũng chỉ đạt 0,751, và khi đổi sang nhãn 180 ngày cả hai bên cùng tăng (mục~\ref{sec:nhan180}).
+
+Nhưng DSS không chọn khách bằng thứ hạng mà bằng $p \cdot v$. Bảng~\ref{tab:zrecency} đặt bốn cách chọn cạnh nhau trên cùng ngân sách 40.000 USD ở từng mốc, cột ``lấp'' là phần khoảng cách từ cách chọn chỉ theo $v$ lên mức trần mà cách chọn đó đạt được. Trên giá trị quyết định, Naive Bayes hơn quy tắc Recency ở cả bốn mốc, trung bình 15,2\% (291.883 so với 253.315 USD), lớn hơn nhiều so với chênh lệch ROC-AUC. Quy tắc Recency còn không dùng được trong DSS, vì nó chỉ cho thứ hạng chứ không cho xác suất (Brier 0,269 so với 0,125): khi đưa thứ hạng vào công thức $p \cdot v$, thứ tự ưu tiên bị sai và $Z$ thấp hơn cả cách chỉ chọn theo giá trị ở ba trong bốn mốc. Cách chọn chỉ theo giá trị đã đạt 74,8\% mức trần tại mốc 01/03/2014, nên phần mô hình đóng góp thêm có giới hạn. Trong phần còn lại đó, Naive Bayes lấp được 40,8\% tại mốc này và 28,7\% trung bình bốn mốc. Recency đủ để biết ai có nguy cơ, nhưng cần xác suất tốt để quyết định chi ngân sách cho ai.
+
+\begin{table}[!htbp]
+\centering
+\caption{Giá trị ròng $Z$ của bốn cách chọn khách ở bốn mốc đánh giá}
+\label{tab:zrecency}
+\footnotesize
+\resizebox{\textwidth}{!}{\input{bang/m_z_recency}}
+\end{table}
+
+\subsubsection{Chỉ số theo cách DSS dùng mô hình}
+Vì lớp $y=1$ chiếm khoảng 82\% số khách, accuracy và F1 không đủ để đánh giá (Bảng~\ref{tab:lop1}, mục 5.3.3). Chỉ số phù hợp là precision ở mức Cao, vì DSS chỉ chăm sóc một phần tư khách có điểm cao nhất: precision 0,898 so với tỷ lệ nền 0,820 nghĩa là danh sách ưu tiên ít nhầm. Bảng~\ref{tab:lift} trình bày lift theo decile (mục~\ref{sec:chisobosung}), cách đọc quen thuộc với bài toán churn. Vì tỷ lệ chung đã là 82,0\%, lift tối đa chỉ có thể là 1,22. Decile rủi ro cao nhất đạt lift 1,12, còn hai decile thấp nhất chỉ có 65,7\% và 35,0\% khách $y=1$. Mô hình mạnh ở việc nhận ra khách sẽ quay lại hơn là xếp thứ tự trong nhóm sẽ rời bỏ. Với DSS, điều này đủ dùng, vì mục đích là loại khách sẽ quay lại khỏi danh sách chăm sóc để không tốn chi phí.
+
+\begin{table}[!htbp]
+\centering
+\caption{Lift theo decile của Naive Bayes tại mốc 01/03/2014 (tỷ lệ $y=1$ chung 82,0\%)}
+\label{tab:lift}
+\footnotesize
+\input{bang/m_lift}
+\end{table}
+
+\subsubsection{Dư địa cải tiến mô hình}\label{sec:dudia}
+Để biết mô hình còn cách mức tốt nhất bao xa, nhóm trả lời ba câu hỏi bằng thực nghiệm trên cùng bốn fold và cùng cách tính $Z$ (kết quả trong \texttt{results/cum4c}).
+
+\textbf{Mô hình đã khai thác hết thuộc tính đang dùng chưa?} Bảng~\ref{tab:dudiatran} so $Z$ của Naive Bayes với các mức trần. Trần của một tập thuộc tính là $Z$ khi xác suất của mỗi khách được thay bằng tỷ lệ $y=1$ thật của chính ô thuộc tính đó tại mốc đánh giá, tức mô hình không còn sai số học, chỉ còn phần ngẫu nhiên trong ô. Trần này tính trong mẫu nên là mức lạc quan. Với đúng 5 thuộc tính đang dùng, trần chỉ cao hơn Naive Bayes 0,7\%, nghĩa là mô hình đã đạt 99,3\% mức mà cách biểu diễn này cho phép. Vì vậy đổi thuật toán trên cùng 5 thuộc tính không cải thiện được $Z$, đúng như Bảng~\ref{tab:trungbinh} đã cho thấy. Trong khoảng cách từ Naive Bayes đến mức biết trước nhãn, 69\% nằm trên trần của tập thuộc tính rộng nhất, tức là phần ngẫu nhiên của nhãn 90 ngày mà không thuộc tính nào trước mốc lý giải được.
+
+\begin{table}[!htbp]
+\centering
+\caption{Giá trị ròng $Z$ của Naive Bayes so với các mức trần, trung bình bốn mốc}
+\label{tab:dudiatran}
+\footnotesize
+\input{bang/m_du_dia_tran}
+\end{table}
+
+\textbf{Dữ liệu nguồn chưa đưa vào kho có giúp không?} Cơ sở dữ liệu gốc còn nhân khẩu học của khách (thu nhập, học vấn, nghề nghiệp, số xe, số con, nhà riêng, hôn nhân, giới tính, tuổi, đăng ký nhận email), vùng bán hàng, lý do mua và loại tiền tệ của từng đơn. Nhóm trích hai nguồn này (bảng nhân khẩu học \texttt{Sales.vPersonDemographics} và bảng đơn hàng \texttt{Sales.SalesOrderHeader} kèm lý do mua), tính thêm 23 thuộc tính tại mỗi mốc (chỉ dùng đơn trước mốc), rồi đưa vào gradient boosting có trọng số hiệu chỉnh dịch chuyển phân bố Recency giữa mốc huấn luyện và mốc dự đoán (cả hai ngoài nội dung môn học). Bảng~\ref{tab:dudianguon} cho thấy ROC-AUC tăng từ 0,720 lên 0,811, và trung bình với Naive Bayes đạt 0,822 với Brier 0,114, tốt hơn mọi mô hình ở Chương 5. Tín hiệu mạnh nhất là vùng bán hàng và đơn ngoại tệ (ROC-AUC đơn lẻ 0,645 và 0,652), còn từng thuộc tính nhân khẩu học riêng lẻ đều dưới 0,535. Tuy vậy $Z$ ở ngân sách 40.000 USD gần như không đổi (292.149 so với 291.883 USD).
+
+\begin{table}[!htbp]
+\centering
+\caption{Mô hình dùng thêm dữ liệu nguồn chưa có trong kho}
+\label{tab:dudianguon}
+\footnotesize
+\resizebox{\textwidth}{!}{\input{bang/m_du_dia_nguon}}
+\end{table}
+
+\textbf{Khi nào xếp hạng tốt hơn mới đổi thành tiền?} Bảng~\ref{tab:zngansach} tính $Z$ theo ngân sách. Ở 40.000 USD trở lên, ngân sách đủ để lấy gần hết khách xe đạp có giá trị, nên cách chọn của Naive Bayes đã sát trần và xếp hạng tốt hơn không đổi được kết quả. Ở ngân sách chặt 20.000 USD, mô hình dùng dữ liệu nguồn cho $Z$ cao hơn 9,7\% (180.656 so với 164.678 USD), vì lúc đó phải chọn kỹ 2.000 khách. DSS vì vậy biết khi nào cần thêm dữ liệu: khi ngân sách nhỏ so với số khách có giá trị.
+
+\begin{table}[!htbp]
+\centering
+\caption{Giá trị ròng $Z$ (USD) theo ngân sách $B$, trung bình bốn mốc đánh giá}
+\label{tab:zngansach}
+\footnotesize
+\resizebox{\textwidth}{!}{\input{bang/m_z_ngan_sach}}
+\end{table}
+
+Ba kết quả này cho một kết luận chung. Với dữ liệu giao dịch và nhãn 90 ngày, Naive Bayes đã ở sát mức tốt nhất có thể cho quyết định ở kịch bản cơ sở, và nhóm giữ mô hình này vì đơn giản, giải thích được và nằm trong nội dung môn học. Dư địa còn lại nằm ở ba chỗ: đưa vùng bán hàng và lý do mua vào kho để dùng khi ngân sách chặt, dùng nhãn 180 ngày khi lịch sử đủ dài, và đo tỷ lệ chăm sóc thành công bằng chiến dịch thật.
+
+\subsection{Khả năng hỗ trợ quyết định}
+\subsubsection{Các câu hỏi kinh doanh hệ thống trả lời được}
+Bảng~\ref{tab:cauhoi} đối chiếu bốn câu hỏi ở Chương 1 với chức năng của DSS và bằng chứng đã có, theo ba bậc: trả lời được, trả lời được nhưng phụ thuộc giả định, và trả lời một phần.
+
+\begin{table}[!htbp]
+\centering
+\caption{Bốn câu hỏi kinh doanh của đề tài và mức trả lời của DSS}
+\label{tab:cauhoi}
+\footnotesize
+\begin{tabular}{p{2.9cm}p{3.6cm}p{5.3cm}p{2.3cm}}
+\toprule
+Câu hỏi & Chức năng & Bằng chứng & Mức trả lời \\
+\midrule
+Q1. Khách nào có nguy cơ không mua lại & \texttt{RiskScore} của Naive Bayes, mức rủi ro theo từng hạng ABC & 4.592 khách mức Cao trong 18.360 khách chấm ngày 08/07/2014 (hạng A 1.285, B 646, C 2.661). Tại mốc 01/03/2014, precision ở mức Cao là 0,898 & Trả lời được, theo nhãn thay thế 90 ngày \\
+Q2. Hành vi mua thay đổi thế nào & Snapshot 20 mốc, năm nhóm khách K-means, luật kết hợp Apriori, dự báo theo tháng & Cơ cấu khách theo mốc, hồ sơ năm nhóm, 26 luật dùng làm gợi ý trong 164 luật, sai số dự báo MAPE tháng 4--5/2014 là 8,2\% với số đơn và 15,4\% với doanh thu & Trả lời được \\
+Q3. Nên ưu tiên giữ chân khách nào & Giá trị kỳ vọng, ma trận Rủi ro $\times$ Giá trị, chọn khách theo ngân sách & Kịch bản cơ sở chọn 4.000 khách với $Z$ kỳ vọng 292.595 USD tại mốc 08/07/2014 (còn 291.883 USD là $Z$ thực hiện trung bình bốn mốc kiểm tra). Bài toán theo kênh chọn 6.124 khách với $Z$ là 256.502 USD & Trả lời được, phụ thuộc giả định $r$ và $c$ \\
+Q4. Nên dùng hành động giữ chân nào & Quy tắc R1 đến R9, ba kênh R3, R4, R5, gợi ý sản phẩm & R3 có 983 khách, R5 có 5.141 khách, R4 chỉ có khách khi ngân sách từ khoảng 61.213 USD. R1, R9 và nhóm đối chứng cần dữ liệu CRM & Một phần \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Giá trị thêm của DSS so với cách làm thủ công}
+DSS giúp chọn khách tốt hơn cách đơn giản ở hai mức: chọn theo $p \cdot v$ cho $Z$ cao hơn 13,7\% so với chọn chỉ theo giá trị tại mốc 01/03/2014 (Bảng~\ref{tab:zrecency}), và trong bài toán theo kênh, xếp theo lợi trên mỗi USD chi phí cho $Z$ cao hơn 6,9\% so với bỏ qua chi phí kênh. Kết quả vẫn dương khi giả định bất lợi hơn: trừ khách chưa đến kỳ khỏi lợi ích thì $Z$ cơ sở còn 205.555 USD, và mô phỏng với $r$ chưa biết cho xác suất lỗ 1,7\%. Một điểm quan trọng với người quản lý là danh sách ưu tiên không phụ thuộc giả định $r$: trong kịch bản cơ sở, $r$, $g$ và $c$ giống nhau cho mọi khách nên $r$ chỉ quyết định ngưỡng hoà vốn (1,20\%) và độ lớn của $Z$, không đổi thứ tự khách. Ở cả bốn mốc, ngân sách 40.000 USD hết trước khi gặp khách có giá trị kỳ vọng âm, nên tăng $r$ không đổi danh sách, giảm $r$ chỉ cắt bớt khách cuối danh sách. Riêng bài toán theo kênh dùng $r$ khác nhau cho từng kênh nên thứ tự chọn có phụ thuộc tỷ lệ giữa các $r_k$. Các kết quả này đúng với lý do cần DSS theo tài liệu môn học: người quản lý khó tự xếp 18.360 khách theo xác suất, giá trị và chi phí kênh trong một ngân sách cố định~\cite{tlmh}.
+
+Theo bốn pha ra quyết định, DSS hỗ trợ tốt ba pha tìm hiểu, thiết kế (mô hình có đủ ba loại biến, Bảng~\ref{tab:bien}) và lựa chọn, còn pha thực hiện và theo dõi mới đạt một phần vì chiến dịch do bộ phận CRM thực hiện và chưa có dữ liệu phản hồi. Trong cả ba pha, DSS không quyết thay người: khách có hai mô hình không thống nhất được gắn cờ để người quản lý xem xét (2.560 khách, Hình~\ref{fig:man2}), và khi $r$ chưa biết DSS đưa ra phương án cho từng phong cách ra quyết định (mục 6.5). Bảng~\ref{tab:dacdiem} (Chương 6) cho thấy bản triển khai đạt đầy đủ 4 trong 14 đặc điểm của DSS, 9 một phần và 1 hạn chế. Về khả dụng, rà soát nội bộ theo Nielsen (Bảng~\ref{tab:nielsen}) tìm ra 16 vấn đề và đã sửa 13, gồm hai vấn đề nặng nhất, nhưng chưa thử với người dùng thật nên chưa kết luận về mức hài lòng, mặt thứ ba của khả dụng~\cite{iso9241}.
+
+\subsection{Hạn chế và hướng cải tiến}\label{sec:hanche}
+Bảng~\ref{tab:hanche} tóm tắt các hạn chế rút ra từ ba mục trên, kèm ảnh hưởng và hướng cải tiến.
+
+{\footnotesize
+\begin{longtable}{p{0.6cm}p{4.2cm}p{5.0cm}p{4.2cm}}
+\caption{Hạn chế của đề tài và hướng cải tiến}\label{tab:hanche}\\
+\toprule
+STT & Hạn chế & Ảnh hưởng & Hướng cải tiến \\
+\midrule
+\endfirsthead
+\toprule
+STT & Hạn chế & Ảnh hưởng & Hướng cải tiến \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Kho chỉ có một nguồn dữ liệu tác nghiệp, ghi đè thông tin cũ (SCD kiểu 1) & Không xem lại được thông tin khách trong quá khứ, thiếu dữ liệu ngoài giao dịch & Dùng SCD kiểu 2, tích hợp thêm nguồn CRM \\
+2 & Kho nạp một lần từ bản sao lưu tĩnh, chưa kiểm tra độ mới và chưa ghi nhật ký sử dụng & Dữ liệu thiếu như tháng 6/2014 chỉ lộ ra khi khảo sát. Kho mới được đối chiếu với nguồn, chưa đối chiếu với thực tế & Kiểm tra ngày dữ liệu mới nhất trước mỗi lần nạp, ghi nhật ký truy cập và thời gian phản hồi \\
+3 & Chưa có nhãn churn thực tế, chỉ dùng nhãn 90 ngày & Trung bình 26,2\% khách $y=1$ là khách chưa đến kỳ. Trừ nhóm này, $Z$ cơ sở còn 205.555 USD & Dùng thêm nhãn 180 ngày, xác nhận khách rời bỏ bằng dữ liệu CRM \\
+4 & Lịch sử dữ liệu ngắn & Chỉ 19 mốc có nhãn đầy đủ, từ 01/06/2013 đến 01/03/2014 & Bổ sung dữ liệu mới, học lại mô hình mỗi lần chấm điểm \\
+5 & Bốn mốc đánh giá cũng là tập dùng để chọn mô hình & Kết quả có thể lạc quan. Ngưỡng Youden trên mốc huấn luyện cảnh báo 82,2\% khách, ngoài mẫu chỉ 64,4\% & Đối chiếu với nhãn thật khi có dữ liệu sau 08/07/2014, giữ một giai đoạn kiểm thử riêng \\
+6 & Khả năng xếp hạng chỉ ngang quy tắc Recency & ROC-AUC 0,7207 so với 0,7191. Mô hình đã đạt 99,3\% trần của 5 thuộc tính đang dùng, phần còn lại là ngẫu nhiên của nhãn (mục~\ref{sec:dudia}). Mô hình hơn quy tắc ở xác suất và ở $Z$ (15,2\%) & Đưa vùng bán hàng, lý do mua và nhân khẩu học vào kho (ROC-AUC lên 0,82, $Z$ tăng 9,7\% khi ngân sách chặt), thêm phản hồi chiến dịch \\
+7 & Chưa có dữ liệu chiến dịch & $r$ và $c$ là giả định, quy tắc R1, R9 và nhóm đối chứng chưa chạy được & Chạy chiến dịch có nhóm đối chứng để đo $r$ thay cho giả định \\
+8 & Pha thực hiện dừng ở xuất CSV, quy tắc mới chưa lưu vào kho & Kết quả chiến dịch chưa quay lại DSS & Kết nối CRM, lưu quy tắc mới vào kho \\
+9 & Chưa thử nghiệm khả dụng với người dùng thật & Kết luận về khả dụng mới dựa trên rà soát nội bộ & Thử với người dùng thật, chấm phiếu SUS (System Usability Scale, thang đo mức hài lòng gồm 10 câu) \\
+\end{longtable}
+}
+
+Tóm lại, kho dữ liệu đạt năm trong sáu chiều chất lượng. Mô hình Naive Bayes không xếp hạng tốt hơn nhiều so với quy tắc đơn giản nhưng cho xác suất đủ tốt để chọn khách có giá trị hơn, với $Z$ cao hơn quy tắc Recency 15,2\% trung bình bốn mốc. DSS hỗ trợ tốt ba pha tìm hiểu, thiết kế và lựa chọn, còn pha thực hiện và theo dõi mới đạt một phần vì phụ thuộc hệ thống CRM. Chương~\ref{sec:kl} tổng kết các kết quả này.

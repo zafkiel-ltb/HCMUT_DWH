@@ -1,0 +1,23 @@
+Changed database context to 'CompanyX_DW'.
+Bang SoDong MongDoi
+---- ------ -------
+DimCustomer 18484 18484
+DimProduct 504 504
+DimTerritory 10 10
+DimDate 1127 1127
+FactSalesOrder 27382 27382
+FactSalesOrderLine 59795 59795
+CustomerSnapshot 196985 196985
+CustomerSnapshot moc 20 20
+RejectedRow lan chay moi nhat 81 81
+ModelRegistry 0 0
+CustomerRiskScore 0 0
+SubTotal_DW MongDoi_SubTotal TotalDue_DW MongDoi_TotalDue
+----------- ---------------- ----------- ----------------
+29052549.9450 29052549.9450 32103068.4755 32103068.4755
+Snapshot_SHA256 MongDoi
+--------------- -------
+0x044F3D499F4F400FA9D20C9B63CA1FB43CFEB10B791A8D32A068B44EE2DCE52F 0x044F3D499F4F400FA9D20C9B63CA1FB43CFEB10B791A8D32A068B44EE2DCE52F
+SrcOrders MongDoi_Orders SrcLines MongDoi_Lines SrcCustomers MongDoi_Customers SrcOrderChecksum
+--------- -------------- -------- ------------- ------------ ----------------- ----------------
+31465 31465 121317 121317 19820 19820 -1956926310

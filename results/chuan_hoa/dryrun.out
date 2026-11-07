@@ -1,0 +1,20 @@
+Changed database context to 'CompanyX_DW'.
+OK 1: ModelRegistry 3 dòng (SCORING/TREE/COMPARISON cùng IsActive=1)
+OK 2: ModelTreeLeaf 12 lá
+OK 3: CustomerRiskScore 18360 dòng
+RiskLevel n minp maxp
+--------- - ---- ----
+Thấp 13770 .000 74.999
+Cao 4590 75.004 100.000
+OK 4: chặn 2 SCORING active (Cannot insert duplicate key row in object 'analytics.ModelRegistry' with unique index 'UX_ModelRegistry_ActiveRole'. The duplicate key value is (SCORING).)
+OK 5: chặn RiskLevel sai (The INSERT statement conflicted with the CHECK constraint "CK_Analytics_RiskLevel". The conflict occurred in database "CompanyX_DW", table "analytics.CustomerRiskScore".)
+OK 6: chặn ModelVersion chưa đăng ký
+ExistingRiskScores_seen_by_C3
+-----------------------------
+18360
+rows_join customers
+--------- ---------
+18360 18360
+reg_after leaf_after score_after
+--------- ---------- -----------
+0 0 0

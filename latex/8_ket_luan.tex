@@ -1,0 +1,42 @@
+% Chương Kết luận và hướng phát triển
+% Số liệu lấy từ Chương 3 đến 7 và results/. Hướng phát triển lấy từ Bảng hạn chế ở Chương 7, không thêm hướng ngoài bảng này.
+\section{Kết luận và hướng phát triển}\label{sec:kl}
+
+\subsection{Kết luận}
+Đề tài xây dựng một hệ thống giúp CompanyX phát hiện sớm khách hàng cá nhân có nguy cơ không mua lại và chọn khách đáng chăm sóc nhất trong một ngân sách cố định. Kết quả gắn với bốn câu hỏi kinh doanh ở Chương 1 như sau.
+\begin{itemize}
+    \item \textbf{Kho dữ liệu và ETL.} Kho \texttt{CompanyX\_DW} theo mô hình hình sao, nạp bằng quy trình ETL 11 bước viết bằng T-SQL. Kho giữ 18.484 khách cá nhân, 27.382 đơn và 59.795 dòng chi tiết sau khi loại phần ngoài phạm vi (1.336 khách, 4.083 đơn và 61.522 dòng chi tiết). Cả 44 phép kiểm tra sau ETL và 21 phép kiểm tra bảng Customer Snapshot đều đạt. Kho đạt năm trong sáu chiều chất lượng dữ liệu, riêng tính kịp thời chưa có phép kiểm tra tự động.
+    \item \textbf{Mô hình dự đoán (câu hỏi 1).} Vì dữ liệu không có nhãn rời bỏ, nhóm đặt luật: khách không đặt đơn nào trong 90 ngày sau một mốc thì có nguy cơ rời bỏ. Naive Bayes trên năm thuộc tính được chọn vì đạt cả ba điều kiện ở 4/4 fold và cho $Z$ cao hơn mạng nơ-ron ở cả bốn mốc, dù ROC-AUC thấp hơn (0,720 so với 0,751). Mô hình được học lại ở mốc gần nhất trước mỗi lần chấm điểm vì cơ cấu khách thay đổi nhanh, cách này cho $Z$ 291.883 USD so với 283.465 USD nếu chỉ học một lần. Mô hình chấm 18.360 khách tại mốc 08/07/2014 và gắn mức Cao cho 4.592 khách (25,0\%). Tại mốc 01/03/2014, nhóm mức Cao có precision 0,898 so với tỷ lệ nền 0,820. Cây Gini làm đối chứng, sinh 11 luật mô tả nhóm khách, hiện trong hồ sơ từng khách (\texttt{TopFactors}).
+    \item \textbf{Hành vi mua theo thời gian (câu hỏi 2).} Bảng Snapshot chụp hành vi từng khách tại 20 mốc và cho thấy cơ cấu khách đổi nhanh: tỷ lệ khách chỉ mua một đơn giảm từ 100\% xuống 63,2\% tại mốc chấm điểm. Khách được chia thành năm nhóm bằng K-means, Apriori cho 26 luật gợi ý sản phẩm trong 164 luật. Dự báo hồi quy theo tháng có MAPE 8,2\% với số đơn và 15,4\% với doanh thu ở hai tháng ngoài mẫu, và đã phát hiện tháng 6/2014 bất thường.
+    \item \textbf{Chọn khách và biện pháp chăm sóc (câu hỏi 3 và 4).} DSS kết hợp xác suất với giá trị khách để chọn danh sách trong ngân sách. Với kịch bản cơ sở (ngân sách 40.000 USD, chi phí 10 USD mỗi khách, tỷ lệ thành công giả định 10\%), hệ thống chọn 4.000 khách với $Z$ 292.595 USD. Khi dùng chi phí và tỷ lệ thành công riêng của ba kênh R3 đến R5, DSS chọn 6.124 khách với $Z$ 256.502 USD, cao hơn 6,9\% so với cách xếp bỏ qua chi phí kênh. Hệ thống còn cho thử giả định bằng what-if, độ nhạy, tìm mục tiêu và mô phỏng, rồi gợi ý kênh chăm sóc theo kho quy tắc. Câu hỏi 4 mới được trả lời một phần vì thiếu dữ liệu chiến dịch.
+\end{itemize}
+Có ba giới hạn cần nhớ khi dùng kết quả. Naive Bayes xếp hạng khách gần như không hơn quy tắc Recency đảo chiều (ROC-AUC 0,7207 so với 0,7191), lợi thế nằm ở chất lượng xác suất và ở giá trị quyết định, với $Z$ cao hơn quy tắc này 15,2\% trung bình bốn mốc. Nhãn 90 ngày lẫn khách chưa đến kỳ mua lại: trung bình 26,2\% khách bị gắn nhãn rời bỏ có mua lại trong ngày 90 đến 180. Tỷ lệ chăm sóc thành công là giả định chưa đo, nên $Z$ dùng để so các lựa chọn chứ không phải dự báo doanh thu.
+
+\subsection{Đóng góp của đề tài}
+\begin{enumerate}
+    \item \textbf{Một chuỗi làm việc liền mạch từ dữ liệu đến quyết định, kiểm tra ở từng bước.} Kho dữ liệu, bảng Snapshot, mô hình và DSS nối với nhau qua các bảng trong kho. Mỗi bước có kiểm tra riêng (65 phép kiểm tra dữ liệu, đánh giá mô hình theo thời gian trên bốn fold) và điểm của mô hình được ghi lại trong kho cùng phiên bản mô hình.
+    \item \textbf{Chọn mô hình bằng giá trị quyết định, không chỉ bằng độ chính xác.} Nhóm đặt trước ba điều kiện chọn mô hình, gồm một điều kiện về $Z$. Nhờ vậy mô hình có ROC-AUC cao nhất không được chọn khi nó cho quyết định kém hơn và kém ổn định hơn, và báo cáo thừa nhận rõ mô hình chọn chỉ nhỉnh hơn quy tắc đơn giản về xếp hạng.
+    \item \textbf{DSS biến xác suất thành danh sách chăm sóc trong ngân sách.} DSS kết hợp rủi ro với giá trị khách, cho người quản lý thử giả định và giữ quyền quyết định cuối. Khi hai mô hình không thống nhất (2.560 khách, 13,9\%), hệ thống gắn cờ để người quản lý xem xét thay vì tự sửa điểm.
+\end{enumerate}
+
+\subsubsection{Các kỹ thuật mở rộng ngoài nội dung môn học}\label{sec:bonus}
+Ngoài các nội dung trong slide, đề tài dùng thêm các kỹ thuật dưới đây. Danh sách chỉ gồm những kỹ thuật mà nhóm không thấy trong slide môn học.
+\begin{itemize}
+    \item Các mô hình mạng nơ-ron MLP, Random Forest, gradient boosting và kNN, dùng để so sánh với Naive Bayes và cây quyết định (Bảng~\ref{tab:cacmohinh}).
+    \item Bootstrap để tính khoảng tin cậy của ROC-AUC, và các chỉ số ROC-AUC, Brier, ECE, lift theo decile để đánh giá xác suất (mục~\ref{sec:chisobosung}).
+    \item Chỉ số PSI để so sánh phân bố dữ liệu giữa mốc huấn luyện và mốc dự đoán (Chương 4).
+    \item Mô phỏng Monte Carlo với tỷ lệ thành công $r$ theo phân phối Beta (Hình~\ref{fig:mophong}).
+    \item Thử nghiệm thêm dữ liệu nhân khẩu học, vùng bán hàng và lý do mua từ cơ sở dữ liệu gốc (mục~\ref{sec:dudia}).
+\end{itemize}
+
+\subsection{Hướng phát triển}
+Các hướng dưới đây lấy từ các hạn chế ở Chương 7 (Bảng~\ref{tab:hanche}).
+\begin{itemize}
+    \item \textbf{Đo tỷ lệ chăm sóc thành công bằng chiến dịch có nhóm đối chứng.} Đây là việc quan trọng nhất, vì hiện nay tỷ lệ này và chi phí chăm sóc đều là giả định. Kết quả chiến dịch cũng cho phép bật hai quy tắc R1 và R9.
+    \item \textbf{Xác nhận khách rời bỏ bằng dữ liệu CRM và dùng thêm nhãn 180 ngày} khi lịch sử dữ liệu đủ dài (hiện chỉ 19 mốc có nhãn đầy đủ), để giảm nhiễu do khách chưa đến kỳ mua lại.
+    \item \textbf{Kiểm định bằng nhãn thật.} Đối chiếu điểm đã chấm tại 08/07/2014 với hành vi mua thật khi có dữ liệu sau ngày này, và giữ một giai đoạn kiểm thử riêng không dùng để chọn mô hình.
+    \item \textbf{Đưa thêm dữ liệu nguồn vào kho.} Vùng bán hàng, lý do mua từng đơn và nhân khẩu học của khách đã có trong cơ sở dữ liệu gốc nhưng chưa vào kho. Thử nghiệm ở Chương 7 cho thấy chúng nâng ROC-AUC từ 0,720 lên 0,811 (0,822 khi kết hợp với Naive Bayes) và tăng $Z$ 9,7\% khi ngân sách chăm sóc chặt, dù ở kịch bản cơ sở $Z$ không đổi.
+    \item \textbf{Nâng cấp kho dữ liệu.} Dùng SCD kiểu 2 để giữ lịch sử thay đổi thông tin khách, tích hợp thêm nguồn CRM, kiểm tra độ mới của dữ liệu trước mỗi lần nạp và ghi nhật ký truy cập, thời gian phản hồi.
+    \item \textbf{Khép kín vòng quyết định.} Kết nối DSS với hệ thống CRM để kết quả chiến dịch quay lại DSS và quy tắc mới được lưu vào kho, thay cho bước xuất tệp CSV hiện nay.
+    \item \textbf{Thử nghiệm khả dụng với người dùng thật}, ví dụ bằng phiếu SUS, vì hiện chỉ có rà soát nội bộ theo 10 nguyên tắc của Nielsen.
+\end{itemize}

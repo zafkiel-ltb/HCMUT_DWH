@@ -1,0 +1,18 @@
+% Sơ đồ năm bước giải bài toán churn, vẽ bằng TikZ (thay cho IMAGE/huong_tiep_can.png của python/ve_so_do_huong_tiep_can.py)
+\begin{tikzpicture}[
+  buoc/.style={draw=black!70, line width=0.8pt, rounded corners=3pt, fill=white, text width=2.62cm, align=center, inner sep=3pt, minimum height=2.8cm},
+  mui/.style={-{Stealth[length=2.5mm]}, line width=0.9pt, black!60},
+  giai/.style={font=\scriptsize, text=red!55!black, text width=2.75cm, align=center, inner sep=0pt}]
+  \newcommand{\mota}[5]{%
+    \node[buoc] (b#1) at (#1*3.27cm, 0) {%
+      {\footnotesize\bfseries #2}\\[3pt]
+      {\scriptsize #3}\\[4pt]
+      {\scriptsize\bfseries\color{black!55} #4}};
+    \node[giai, below=3pt of b#1.south] {#5};}
+  \mota{0}{1. Kho dữ liệu}{Gom dữ liệu bán hàng vào kho hình sao, chụp hành vi từng khách tại 20 mốc}{Chương 3}{Giải: dữ liệu rải rác, thiếu theo dõi theo thời gian}
+  \mota{1}{2. Xác định churn}{Khách không đặt đơn trong 90 ngày sau một mốc là có nguy cơ rời bỏ, tính thuộc tính}{Chương 4}{Giải: dữ liệu chưa có nhãn churn}
+  \mota{2}{3. Dự đoán}{Chấm điểm rủi ro cho từng khách, thử mô hình theo đúng trình tự thời gian}{Chương 5}{Trả lời: khách nào có nguy cơ rời bỏ}
+  \mota{3}{4. Ra quyết định}{Kết hợp rủi ro với giá trị khách, chọn khách trong ngân sách, gợi ý cách chăm sóc}{Chương 6}{Giải: ưu tiên ai, chi bao nhiêu}
+  \mota{4}{5. Đánh giá}{So với cách chọn khách đơn giản, nêu rõ chỗ làm được, chỗ chưa làm được}{Chương 7}{Kiểm tra: có tốt hơn cách đơn giản không}
+  \foreach \i/\j in {0/1,1/2,2/3,3/4} \draw[mui] (b\i.east) -- (b\j.west);
+\end{tikzpicture}

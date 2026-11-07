@@ -1,0 +1,10 @@
+# Môi trường Python thống nhất cho cụm 3B–6 (đã kiểm trên Python 3.9.6, macOS; dùng cùng phiên bản trên Windows)
+pandas==2.3.3
+numpy==2.0.2
+scikit-learn==1.6.1
+pyodbc>=5.1          # phiên bản chưa kiểm, lấy bản mới nhất khi cài
+matplotlib>=3.9
+streamlit>=1.40
+scipy>=1.13           # quy hoạch nguyên (cụm 6)
+altair>=5             # biểu đồ trong giao diện
+joblib>=1.4

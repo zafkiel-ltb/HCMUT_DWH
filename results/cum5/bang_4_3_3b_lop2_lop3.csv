@@ -1,0 +1,11 @@
+Lớp,Chỉ số,Giá trị tại mốc 2014-03-01
+Lớp 2 – xếp hạng và xác suất,ROC-AUC,0.7206564266805445
+,ROC-AUC Recency đảo chiều,0.7190974921010924
+,AP lớp 1,0.8933297117832241
+,AP lớp 0,0.47586089643162066
+,Brier,0.11757262680456185
+,Brier dự đoán hằng số,0.14799727672441862
+,Precision@K (K = 4000),0.89325
+Lớp 3 – giá trị quyết định,Z theo p·v (USD),289245.54460670584
+,Z chỉ theo v (USD),254292.6349414058
+,Z biết trước nhãn (USD),339886.25778767257

@@ -1,0 +1,165 @@
+A,B,so_muc,support,confidence,lift
+Road Bikes + Touring Bikes,Helmets + Mountain Bikes,4,0.0133,0.4529,6.0338
+Tires and Tubes + Touring Bikes,Helmets + Mountain Bikes,4,0.0117,0.4127,5.4982
+Road Bikes + Touring Bikes,Bottles and Cages + Mountain Bikes,4,0.0108,0.366,5.4675
+Bottles and Cages + Helmets + Mountain Bikes,Touring Bikes,4,0.0153,0.5723,4.9563
+Bottles and Cages + Touring Bikes,Helmets + Mountain Bikes,4,0.0153,0.3673,4.894
+Helmets + Mountain Bikes,Bottles and Cages + Touring Bikes,4,0.0153,0.2039,4.894
+Helmets + Mountain Bikes + Tires and Tubes,Touring Bikes,4,0.0117,0.5599,4.8489
+Caps + Mountain Bikes,Touring Bikes,3,0.0144,0.5248,4.5446
+Fenders + Road Bikes,Mountain Bikes,3,0.0264,1.0,4.5166
+Fenders + Touring Bikes,Mountain Bikes,3,0.0117,1.0,4.5166
+Touring Bikes,Helmets + Mountain Bikes,3,0.0363,0.3146,4.1919
+Helmets + Mountain Bikes,Touring Bikes,3,0.0363,0.484,4.1919
+Helmets + Tires and Tubes + Touring Bikes,Mountain Bikes,4,0.0117,0.8921,4.0293
+Bottles and Cages + Mountain Bikes,Helmets + Touring Bikes,4,0.0153,0.2286,4.0209
+Helmets + Touring Bikes,Bottles and Cages + Mountain Bikes,4,0.0153,0.2692,4.0209
+Bottles and Cages + Helmets + Touring Bikes,Mountain Bikes,4,0.0153,0.8438,3.8113
+Touring Bikes,Bottles and Cages + Mountain Bikes,3,0.0291,0.2524,3.77
+Bottles and Cages + Mountain Bikes,Touring Bikes,3,0.0291,0.4353,3.77
+Bottles and Cages + Road Bikes + Touring Bikes,Mountain Bikes,4,0.0108,0.7984,3.606
+Jerseys + Mountain Bikes,Touring Bikes,3,0.0151,0.4098,3.5487
+Helmets + Road Bikes + Touring Bikes,Mountain Bikes,4,0.0133,0.7778,3.5129
+Helmets + Touring Bikes,Mountain Bikes + Tires and Tubes,4,0.0117,0.2059,3.4467
+Tires and Tubes + Touring Bikes,Mountain Bikes,3,0.0216,0.7601,3.433
+Bottles and Cages + Touring Bikes,Mountain Bikes,3,0.0291,0.6993,3.1587
+Mountain Bikes + Tires and Tubes,Touring Bikes,3,0.0216,0.361,3.1263
+Jerseys + Touring Bikes,Mountain Bikes,3,0.0151,0.684,3.0891
+Helmets + Mountain Bikes + Road Bikes,Touring Bikes,4,0.0133,0.3403,2.9469
+Caps + Touring Bikes,Mountain Bikes,3,0.0144,0.6495,2.9336
+Mountain Bikes + Touring Bikes,Bottles and Cages + Helmets,4,0.0153,0.2288,2.9318
+Helmets + Touring Bikes,Mountain Bikes,3,0.0363,0.6389,2.8856
+Road Bikes + Touring Bikes,Mountain Bikes,3,0.0188,0.6377,2.8803
+Bottles and Cages + Mountain Bikes + Road Bikes,Touring Bikes,4,0.0108,0.3178,2.7524
+Bottles and Cages + Helmets + Road Bikes,Mountain Bikes,4,0.015,0.5847,2.6411
+Touring Bikes,Mountain Bikes,2,0.0669,0.5792,2.6162
+Mountain Bikes,Touring Bikes,2,0.0669,0.3021,2.6162
+Jerseys + Mountain Bikes,Fenders,3,0.0102,0.2766,2.4266
+Helmets + Road Bikes + Tires and Tubes,Mountain Bikes,4,0.0117,0.5258,2.3748
+Bottles and Cages + Touring Bikes,Mountain Bikes + Road Bikes,4,0.0108,0.2588,2.3478
+Mountain Bikes + Road Bikes + Touring Bikes,Bottles and Cages,4,0.0108,0.5739,2.3416
+Helmets + Mountain Bikes,Bottles and Cages + Road Bikes,4,0.015,0.2003,2.3378
+Bottles and Cages + Jerseys,Caps,3,0.0108,0.2575,2.2436
+Bottles and Cages + Tires and Tubes,Fenders,3,0.0111,0.2528,2.2175
+Mountain Bikes + Road Bikes + Touring Bikes,Helmets,4,0.0133,0.7101,2.2088
+Caps + Tires and Tubes,Jerseys,3,0.0155,0.38,2.2009
+Jerseys + Tires and Tubes,Caps,3,0.0155,0.2502,2.1804
+Helmets + Jerseys,Caps,3,0.0125,0.25,2.1785
+Shorts,Caps,2,0.0136,0.2473,2.1548
+Shorts,Jerseys,2,0.0203,0.368,2.1311
+Helmets + Touring Bikes,Mountain Bikes + Road Bikes,4,0.0133,0.2347,2.1288
+Fenders,Mountain Bikes + Road Bikes,3,0.0264,0.2317,2.102
+Mountain Bikes + Road Bikes,Fenders,3,0.0264,0.2396,2.102
+Fenders + Mountain Bikes,Touring Bikes,3,0.0117,0.2404,2.0824
+Hydration Packs,Bottles and Cages,2,0.0192,0.4986,2.0342
+Bottles and Cages + Mountain Bikes,Helmets + Road Bikes,4,0.015,0.2246,2.0291
+Bottles and Cages + Helmets,Touring Bikes,3,0.0181,0.2324,2.0125
+Caps + Road Bikes,Jerseys,3,0.0124,0.3429,1.986
+Caps + Helmets,Jerseys,3,0.0125,0.3428,1.9853
+Bottles and Cages + Fenders,Mountain Bikes,3,0.0124,0.4368,1.9728
+Helmets + Mountain Bikes,Fenders,3,0.0168,0.2242,1.967
+Fenders,Mountain Bikes,2,0.0485,0.4252,1.9206
+Mountain Bikes,Fenders,2,0.0485,0.2189,1.9206
+Bike Stands,Tires and Tubes,2,0.0114,0.875,1.91
+Fenders + Helmets,Mountain Bikes,3,0.0168,0.421,1.9014
+Mountain Bikes + Touring Bikes,Caps,3,0.0144,0.2158,1.8804
+Road Bikes + Touring Bikes,Bottles and Cages,3,0.0135,0.4584,1.8703
+Caps,Jerseys,2,0.037,0.3227,1.8692
+Jerseys,Caps,2,0.037,0.2145,1.8692
+Caps + Road Bikes,Mountain Bikes,3,0.0146,0.4048,1.8285
+Road Bikes + Touring Bikes,Helmets,3,0.0172,0.5823,1.811
+Gloves,Helmets + Tires and Tubes,3,0.0211,0.284,1.8045
+Gloves + Tires and Tubes,Helmets,3,0.0211,0.58,1.8039
+Road Bikes + Tires and Tubes,Mountain Bikes,3,0.0311,0.3974,1.7947
+Bottles and Cages + Road Bikes,Mountain Bikes,3,0.0339,0.3961,1.7888
+Mountain Bikes + Touring Bikes,Bottles and Cages,3,0.0291,0.4357,1.7775
+Caps + Mountain Bikes,Bottles and Cages,3,0.0119,0.4317,1.7613
+Helmets + Mountain Bikes + Touring Bikes,Bottles and Cages,4,0.0153,0.4213,1.7189
+Fenders + Jerseys,Mountain Bikes,3,0.0102,0.3801,1.7167
+Mountain Bikes + Touring Bikes,Helmets,3,0.0363,0.5432,1.6894
+Mountain Bikes + Tires and Tubes + Touring Bikes,Helmets,4,0.0117,0.5429,1.6887
+Bottles and Cages + Mountain Bikes + Touring Bikes,Helmets,4,0.0153,0.5252,1.6336
+Bottles and Cages + Helmets + Mountain Bikes,Road Bikes,4,0.015,0.5621,1.6245
+Helmets + Mountain Bikes + Tires and Tubes,Road Bikes,4,0.0117,0.5573,1.6106
+Gloves,Jerseys,2,0.0206,0.2775,1.6069
+Helmets + Road Bikes,Mountain Bikes,3,0.0392,0.3543,1.6004
+Fenders + Mountain Bikes,Road Bikes,3,0.0264,0.5449,1.5749
+Jerseys + Mountain Bikes,Road Bikes,3,0.02,0.5444,1.5732
+Helmets + Mountain Bikes + Road Bikes,Bottles and Cages,4,0.015,0.3833,1.564
+Caps + Road Bikes,Bottles and Cages,3,0.0137,0.3807,1.5531
+Gloves,Helmets,2,0.0371,0.4985,1.5506
+Bottles and Cages + Caps,Jerseys,3,0.0108,0.2676,1.5497
+Bottles and Cages + Helmets,Mountain Bikes,3,0.0267,0.3426,1.5476
+Caps + Tires and Tubes,Helmets,3,0.0203,0.496,1.5427
+Caps + Mountain Bikes,Road Bikes,3,0.0146,0.5307,1.5337
+Touring Bikes,Helmets,2,0.0569,0.4925,1.5317
+Helmets + Mountain Bikes,Road Bikes,3,0.0392,0.5225,1.51
+Mountain Bikes + Tires and Tubes,Road Bikes,3,0.0311,0.5205,1.5043
+Jerseys + Tires and Tubes,Helmets,3,0.0299,0.482,1.4992
+Cleaners,Bottles and Cages,2,0.0172,0.3657,1.4922
+Bottles and Cages + Tires and Tubes,Helmets,3,0.0209,0.4746,1.4761
+Hydration Packs,Mountain Bikes,2,0.0126,0.3263,1.4736
+Touring Bikes,Bottles and Cages,2,0.0417,0.3608,1.4723
+Bottles and Cages + Mountain Bikes,Road Bikes,3,0.0339,0.5069,1.465
+Bottles and Cages + Gloves,Helmets,3,0.0106,0.4699,1.4615
+Bottles and Cages + Tires and Tubes,Jerseys,3,0.0111,0.2515,1.4569
+Jerseys + Road Bikes,Mountain Bikes,3,0.02,0.3222,1.4554
+Helmets + Mountain Bikes,Bottles and Cages,3,0.0267,0.3563,1.4538
+Mountain Bikes,Road Bikes,2,0.1102,0.4979,1.4389
+Road Bikes,Mountain Bikes,2,0.1102,0.3186,1.4389
+Tires and Tubes + Touring Bikes,Helmets,3,0.0131,0.4626,1.4387
+Gloves + Road Bikes,Helmets,3,0.0106,0.4619,1.4367
+Caps,Bottles and Cages,2,0.0403,0.3512,1.4329
+Caps + Helmets,Bottles and Cages,3,0.0124,0.3398,1.3863
+Bottles and Cages + Mountain Bikes + Road Bikes,Helmets,4,0.015,0.443,1.3779
+Bike Racks,Tires and Tubes,2,0.0111,0.6296,1.3744
+Fenders,Jerseys,2,0.0268,0.2351,1.3615
+Bottles and Cages + Touring Bikes,Helmets,3,0.0181,0.4353,1.3539
+Jerseys + Mountain Bikes,Bottles and Cages,3,0.0122,0.3314,1.352
+Cleaners,Tires and Tubes,2,0.0289,0.6146,1.3415
+Bottles and Cages + Caps,Mountain Bikes,3,0.0119,0.2946,1.3306
+Bottles and Cages + Jerseys,Mountain Bikes,3,0.0122,0.2913,1.3156
+Mountain Bikes + Touring Bikes,Jerseys,3,0.0151,0.2256,1.3065
+Helmets + Jerseys,Tires and Tubes,3,0.0299,0.5967,1.3026
+Helmets + Touring Bikes,Bottles and Cages,3,0.0181,0.319,1.3014
+Caps + Helmets,Mountain Bikes,3,0.0102,0.2802,1.2655
+Mountain Bikes + Road Bikes,Bottles and Cages,3,0.0339,0.3078,1.2558
+Gloves + Helmets,Tires and Tubes,3,0.0211,0.5698,1.2437
+Bottles and Cages + Mountain Bikes,Helmets,3,0.0267,0.3995,1.2426
+Gloves,Bottles and Cages,2,0.0226,0.3038,1.2395
+Bottles and Cages + Fenders,Helmets,3,0.0113,0.3985,1.2393
+Bottles and Cages,Mountain Bikes,2,0.0669,0.2731,1.2335
+Mountain Bikes,Bottles and Cages,2,0.0669,0.3023,1.2335
+Helmets + Jerseys,Bottles and Cages,3,0.015,0.3,1.224
+Fenders + Mountain Bikes,Jerseys,3,0.0102,0.2101,1.2169
+Caps + Helmets,Tires and Tubes,3,0.0203,0.5544,1.2102
+Fenders + Tires and Tubes,Helmets,3,0.0149,0.3834,1.1926
+Caps + Jerseys,Bottles and Cages,3,0.0108,0.2912,1.188
+Fenders + Tires and Tubes,Bottles and Cages,3,0.0111,0.2865,1.169
+Gloves + Helmets,Bottles and Cages,3,0.0106,0.2863,1.1683
+Mountain Bikes + Road Bikes + Tires and Tubes,Helmets,4,0.0117,0.3748,1.1657
+Caps + Mountain Bikes,Helmets,3,0.0102,0.3723,1.1579
+Fenders + Helmets,Bottles and Cages,3,0.0113,0.2834,1.1562
+Bottles and Cages + Jerseys,Helmets,3,0.015,0.3589,1.1163
+Mountain Bikes + Road Bikes,Helmets,3,0.0392,0.3557,1.1064
+Caps + Road Bikes,Helmets,3,0.0127,0.3535,1.0994
+Fenders,Helmets,2,0.04,0.3507,1.0908
+Mountain Bikes + Tires and Tubes,Helmets,3,0.0209,0.35,1.0887
+Caps,Mountain Bikes,2,0.0275,0.2397,1.0825
+Fenders + Mountain Bikes,Helmets,3,0.0168,0.3472,1.0799
+Bottles and Cages + Mountain Bikes + Touring Bikes,Road Bikes,4,0.0108,0.3701,1.0696
+Gloves,Tires and Tubes,2,0.0364,0.4898,1.0691
+Helmets,Tires and Tubes,2,0.1574,0.4896,1.0687
+Tires and Tubes,Helmets,2,0.1574,0.3436,1.0687
+Helmets + Mountain Bikes + Touring Bikes,Road Bikes,4,0.0133,0.3673,1.0615
+Helmets,Mountain Bikes,2,0.0751,0.2334,1.0544
+Mountain Bikes,Helmets,2,0.0751,0.339,1.0544
+Caps + Jerseys,Helmets,3,0.0125,0.3382,1.052
+Fenders + Mountain Bikes,Bottles and Cages,3,0.0124,0.2562,1.0452
+Jerseys,Road Bikes,2,0.0622,0.3603,1.0411
+Vests,Tires and Tubes,2,0.0143,0.4746,1.0361
+Fenders,Bottles and Cages,2,0.0284,0.2494,1.0176
+Helmets + Jerseys,Mountain Bikes,3,0.0113,0.225,1.0162
+Bottles and Cages,Road Bikes,2,0.0857,0.3496,1.0102
+Road Bikes,Bottles and Cages,2,0.0857,0.2476,1.0102
+Caps + Helmets,Road Bikes,3,0.0127,0.3487,1.0078

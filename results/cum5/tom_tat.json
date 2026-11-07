@@ -1,0 +1,202 @@
+{
+ "n": 18360,
+ "cao": 4592,
+ "cao_pct": 0.2501,
+ "cao_hang": {
+  "A": 1285,
+  "B": 646,
+  "C": 2661
+ },
+ "thap_hang": {
+  "A": 3852,
+  "B": 1935,
+  "C": 7981
+ },
+ "cao_min": {
+  "A": 0.935,
+  "B": 0.886,
+  "C": 0.986
+ },
+ "cao_median": {
+  "A": 0.946,
+  "B": 0.904,
+  "C": 0.989
+ },
+ "p75_toan_bo": 0.9754,
+ "co": 2560,
+ "co_pct": 0.1394,
+ "la_nhieu_co": {
+  "la": 8,
+  "co": 1376,
+  "n": 2727,
+  "risk_tb": 0.55,
+  "tree": 0.25
+ },
+ "E": "2014-03-01",
+ "T": "2013-11-15",
+ "T1": "2013-08-01",
+ "T2": "2013-11-15",
+ "youden": 0.729,
+ "youden_out": 0.878,
+ "lop1": {
+  "Youden trên mốc huấn luyện (RiskScore ≥ 0.729)": {
+   "Số khách bị cảnh báo (dự đoán y = 1)": 11650,
+   "Tỷ lệ khách bị cảnh báo": 0.8223,
+   "TP": 10477,
+   "FP": 1173,
+   "FN": 1135,
+   "TN": 1382,
+   "Accuracy": 0.8371,
+   "Tỷ lệ lỗi": 0.1629,
+   "Precision": 0.8993,
+   "Sensitivity (recall)": 0.9023,
+   "Specificity": 0.5409,
+   "F1": 0.9008
+  },
+  "Youden ngoài mẫu (RiskScore ≥ 0.878)": {
+   "Số khách bị cảnh báo (dự đoán y = 1)": 9125,
+   "Tỷ lệ khách bị cảnh báo": 0.6441,
+   "TP": 8171,
+   "FP": 954,
+   "FN": 3441,
+   "TN": 1601,
+   "Accuracy": 0.6898,
+   "Tỷ lệ lỗi": 0.3102,
+   "Precision": 0.8955,
+   "Sensitivity (recall)": 0.7037,
+   "Specificity": 0.6266,
+   "F1": 0.7881
+  },
+  "Phân vị 75 trong từng hạng ABC (RiskLevel Cao)": {
+   "Số khách bị cảnh báo (dự đoán y = 1)": 3544,
+   "Tỷ lệ khách bị cảnh báo": 0.2502,
+   "TP": 3182,
+   "FP": 362,
+   "FN": 8430,
+   "TN": 2193,
+   "Accuracy": 0.3794,
+   "Tỷ lệ lỗi": 0.6206,
+   "Precision": 0.8979,
+   "Sensitivity (recall)": 0.274,
+   "Specificity": 0.8583,
+   "F1": 0.4199
+  },
+  "Luôn dự đoán y = 1 (lớp đa số)": {
+   "Số khách bị cảnh báo (dự đoán y = 1)": 14167,
+   "Tỷ lệ khách bị cảnh báo": 1.0,
+   "TP": 11612,
+   "FP": 2555,
+   "FN": 0,
+   "TN": 0,
+   "Accuracy": 0.8197,
+   "Tỷ lệ lỗi": 0.1803,
+   "Precision": 0.8197,
+   "Sensitivity (recall)": 1.0,
+   "Specificity": 0.0,
+   "F1": 0.9009
+  }
+ },
+ "lop1_cot": [
+  "Youden trên mốc huấn luyện (RiskScore ≥ 0.729)",
+  "Youden ngoài mẫu (RiskScore ≥ 0.878)",
+  "Phân vị 75 trong từng hạng ABC (RiskLevel Cao)",
+  "Luôn dự đoán y = 1 (lớp đa số)"
+ ],
+ "lop2": {
+  "auc": 0.7207,
+  "auc_rec": 0.7191,
+  "ap1": 0.8933,
+  "ap0": 0.4759,
+  "brier": 0.1176,
+  "brier_hs": 0.148,
+  "p_at_k": 0.8932
+ },
+ "lop3": {
+  "z_pv": 289246,
+  "z_v": 254293,
+  "z_oracle": 339886
+ },
+ "reg": {
+  "nb_auc4": 0.7199,
+  "nb_brier4": 0.1252,
+  "mlp_auc4": 0.7513,
+  "tree_auc4": 0.6803
+ },
+ "la": {
+  "so": 11,
+  "min": 420,
+  "max": 6054
+ },
+ "prior": 0.8197,
+ "khach": {
+  "cao": {
+   "id": 12201,
+   "recency": 180,
+   "frequency": 2,
+   "monetary": 64.29,
+   "risk": 0.993,
+   "pct": 100.0,
+   "level": "Cao",
+   "tree": 0.898,
+   "flag": 0,
+   "la": 1,
+   "la_ty_le": 0.899,
+   "la_khach": 6054,
+   "abc": "C"
+  },
+  "lech": {
+   "id": 26339,
+   "recency": 186,
+   "frequency": 2,
+   "monetary": 4923.32,
+   "risk": 0.963,
+   "pct": 99.747,
+   "level": "Cao",
+   "tree": 0.586,
+   "flag": 1,
+   "la": 5,
+   "la_ty_le": 0.559,
+   "la_khach": 440,
+   "abc": "A"
+  },
+  "thap": {
+   "id": 26774,
+   "recency": 508,
+   "frequency": 1,
+   "monetary": 865.2,
+   "risk": 0.049,
+   "pct": 0.009,
+   "level": "Thấp",
+   "tree": 0.249,
+   "flag": 0,
+   "la": 8,
+   "la_ty_le": 0.181,
+   "la_khach": 420,
+   "abc": "C"
+  }
+ },
+ "ty_so": {
+  "Recency <90": 1.77,
+  "Recency 90–179": 2.057,
+  "Recency 180–269": 2.495,
+  "Recency 270–364": 0.105,
+  "Recency 365–539": 0.088,
+  "Recency ≥540": 0.128,
+  "Frequency 1": 0.895,
+  "Frequency 2": 1.379,
+  "Frequency ≥3": 1.093,
+  "Monetary Q1": 1.907,
+  "Monetary Q2": 2.01,
+  "Monetary Q3": 0.478,
+  "Monetary Q4": 0.855,
+  "BikeBuyer 0": 1.727,
+  "BikeBuyer 1": 0.706,
+  "NSub 1": 0.427,
+  "NSub 2": 2.748,
+  "NSub 3–4": 1.84,
+  "NSub ≥5": 1.127
+ },
+ "thap_cao": {
+  "thap": 13768
+ }
+}

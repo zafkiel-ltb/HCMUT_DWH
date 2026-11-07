@@ -1,0 +1,24 @@
+dac_trung,ten,AUC
+ngoai_te,Có đơn ngoại tệ,0.6520245437441394
+TerritoryID,Vùng bán hàng,0.6445061050954104
+xe_lan_cuoi,Đơn gần nhất có xe đạp,0.6046573219012924
+khong_ly_do_lan_cuoi,Đơn gần nhất không ghi lý do mua,0.5895258498361571
+so_don_xe,Số đơn có xe đạp,0.5525515308072558
+khoang_cach_TB,Khoảng cách trung bình giữa các đơn,0.54440832514849
+thu_nhap,Thu nhập,0.5336709510978925
+nghe,Nghề nghiệp,0.5313986711904076
+xu_huong_tien,Tiền đơn gần nhất / trung bình,0.5292737858737132
+TotalChildren,Số con,0.5196764869057113
+hoc_van,Học vấn,0.5187086137358411
+ty_le_khuyen_mai,Tỷ lệ đơn mua vì khuyến mãi,0.5160683192297866
+khuyen_mai_lan_cuoi,Đơn gần nhất mua vì khuyến mãi,0.5136856703336113
+nha_rieng,Có nhà riêng,0.5130327422943941
+nam,Giới tính nam,0.5107128869318668
+NumberChildrenAtHome,Số con ở nhà,0.507474671926538
+ty_le_quang_cao,Tỷ lệ đơn mua vì quảng cáo,0.506577529959223
+tuoi,Tuổi,0.5052680505287397
+ngay_tu_mua_xe,Ngày từ lần mua xe đạp,0.5049041648662258
+ket_hon,Đã kết hôn,0.5044042602530752
+EmailPromotion,Đăng ký nhận email,0.5029728339601451
+NumberCarsOwned,Số xe hơi,0.5025269594245241
+tung_giam_gia,Từng được giảm giá,0.5

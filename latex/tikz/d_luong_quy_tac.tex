@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, text width=10.5cm, minimum height=0.9cm, align=center, font=\small},
+  off/.style={draw, dashed, rounded corners=2pt, text width=10.5cm, minimum height=0.9cm, align=center, font=\small},
+  cert/.style={-{Stealth[length=2mm]}}, node distance=0.55cm]
+  \node[box] (a) {Khách tại mốc chấm điểm: \texttt{RiskScore}, nhóm, hạng ABC, $v_i$};
+  \node[off, below=of a] (b) {\textbf{R1} loại khách đã được liên hệ trong 90 ngày trước (cần nhật ký CRM)};
+  \node[box, below=of b] (c) {\textbf{R3 đến R5} gán hình thức liên hệ kèm chi phí $c_k$ và tỷ lệ thành công $r_k$};
+  \node[box, below=of c] (d) {\textbf{R2} loại khách có $EV_i \leq 0$};
+  \node[box, below=of d] (e) {Tối ưu: chọn khách trong ngân sách $B$ (bài toán cái túi 0--1)};
+  \node[box, below=of e] (f) {\textbf{R6 đến R8} gợi ý sản phẩm cho khách được chọn (nội dung mặc định nếu không khớp)};
+  \node[box, below=of f] (g) {Danh sách chăm sóc kèm giải thích: mã quy tắc đã kích hoạt, căn cứ, \texttt{TopFactors}};
+  \node[off, below=of g] (h) {\textbf{R9} giám sát mô hình sau chiến dịch (cần nhóm đối chứng và dữ liệu CRM)};
+  \foreach \s/\t in {a/b,b/c,c/d,d/e,e/f,f/g}{\draw[cert] (\s) -- (\t);}
+  \draw[cert, dashed] (g) -- (h);
+\end{tikzpicture}

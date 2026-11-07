@@ -1,0 +1,94 @@
+% Phụ lục: hai bảng dài chuyển từ mục 6.6.5 và 6.6.6 sang đây để thân bài gọn hơn. Nội dung giữ nguyên.
+\section{Bảng rà soát giao diện theo Nielsen}\label{sec:pl_nielsen}
+Bảng~\ref{tab:nielsen} là kết quả rà soát nội bộ giao diện theo 10 nguyên tắc của Nielsen, được tóm tắt ở mục~\ref{sec:nielsen}.
+
+{\footnotesize
+\begin{longtable}{p{0.6cm}p{3.3cm}p{1.4cm}p{6.2cm}p{0.8cm}p{1.5cm}}
+\caption{Rà soát nội bộ giao diện theo 10 nguyên tắc Nielsen (mức độ từ 0 đến 4)}\label{tab:nielsen}\\
+\toprule
+STT & Nguyên tắc & Màn hình & Vấn đề & Mức & Trạng thái \\
+\midrule
+\endfirsthead
+\toprule
+STT & Nguyên tắc & Màn hình & Vấn đề & Mức & Trạng thái \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Hiển thị trạng thái hệ thống & 5 & Nút ``Gửi duyệt'' quy tắc mới không phản hồi gì khi bấm & 2 & Đã sửa \\
+2 & Hiển thị trạng thái hệ thống & 3 & Bấm ``Lưu kịch bản'' không có xác nhận, không xoá được kịch bản đã lưu & 1 & Đã sửa \\
+3 & Phù hợp giữa hệ thống và thế giới thực & 2, 4 & Mô tả nhóm của cây dùng tên biến tiếng Anh và số thập phân dấu chấm & 3 & Đã sửa \\
+4 & Phù hợp giữa hệ thống và thế giới thực & 3 & Tỷ lệ thành công $r$ hiển thị dạng 0.10 thay vì 10\% & 1 & Đã sửa \\
+5 & Nhất quán và theo chuẩn & Thanh bên & Menu mất số thứ tự màn hình trong khi hướng dẫn ghi ``1. Tổng quan rủi ro'' & 2 & Đã sửa \\
+6 & Nhất quán và theo chuẩn & 3, 4, 5 & Bảng dùng số kiểu Anh (1,250.3) lẫn với thẻ số kiểu Việt (39.998) & 2 & Đã sửa \\
+7 & Nhất quán và theo chuẩn & 2 & Ô cảnh báo đổi mọi dấu chấm câu thành dấu phẩy & 2 & Đã sửa \\
+8 & Nhất quán và theo chuẩn & 5 & Mốc chấm điểm hiện ``nan\%'', biểu đồ tô đậm mô hình so sánh thay vì mô hình đang dùng & 1 & Đã sửa \\
+9 & Phòng ngừa lỗi & 4 & Vẫn xuất CSV khi đã thêm hoặc bớt khách mà chưa ghi lý do, dòng chữ nói ``ghi nhật ký'' nhưng không lưu gì & 3 & Đã sửa \\
+10 & Giúp nhận biết, chẩn đoán và khắc phục lỗi & 4 & Mã khách sai hoặc đã có trong danh sách bị bỏ qua mà không báo & 2 & Đã sửa \\
+11 & Nhận biết thay vì phải nhớ & 1 & Tên nhóm trong bộ lọc bị cắt (``N1 -- Mua nhiều l\ldots'') & 2 & Đã sửa \\
+12 & Nhận biết thay vì phải nhớ & 1 & Nhãn hai thẻ số quá dài nên bị cắt & 1 & Đã sửa \\
+13 & Hiển thị trạng thái hệ thống & 2 & Mức rủi ro hiện kèm mũi tên tăng, dễ hiểu nhầm là rủi ro đang tăng & 1 & Đã sửa \\
+14 & Phòng ngừa lỗi & 5 & Đề xuất quy tắc mới chưa được lưu vào kho (bản trình diễn) & 2 & Còn lại, giới hạn phạm vi \\
+15 & Linh hoạt và hiệu quả & 4 & Phải gõ mã khách bằng tay để thêm hoặc bớt, chưa chọn trực tiếp trên bảng & 1 & Còn lại \\
+16 & Thẩm mỹ và tối giản & 3 & Sáu kỹ thuật phân tích nằm trên một hàng nút khá dài & 1 & Còn lại \\
+17 & Phòng ngừa lỗi & 4 & Thêm khách có giá trị kỳ vọng không dương mà không có cảnh báo vi phạm quy tắc R2 & 2 & Đã sửa \\
+18 & Giúp nhận biết, chẩn đoán và khắc phục lỗi & 2 & Mã khách ngoài khoảng hoặc có chữ bị ô nhập số từ chối bằng thông báo tiếng Anh mặc định của Streamlit & 1 & Còn lại \\
+\end{longtable}
+}
+
+\section{Các ca kiểm thử chức năng}\label{sec:pl_kiemthu}
+Bảng~\ref{tab:kiemthu} liệt kê 25 ca kiểm thử hộp đen của mục~\ref{sec:kiemthu}, chạy trên bản demo tại mốc chấm điểm 08/07/2014 với phiên bản Naive Bayes đang dùng.
+
+{\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{p{0.95cm}p{4.0cm}p{4.3cm}p{5.5cm}}
+\caption{Các ca kiểm thử chức năng của CompanyX DSS tại mốc 08/07/2014}\label{tab:kiemthu}\\
+\toprule
+Mã & Bước thực hiện và dữ liệu & Kết quả mong đợi & Kết quả quan sát \\
+\midrule
+\endfirsthead
+\toprule
+Mã & Bước thực hiện và dữ liệu & Kết quả mong đợi & Kết quả quan sát \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\multicolumn{4}{l}{\textit{Màn hình 1: Tổng quan rủi ro}} \\
+TC01 & Chọn mốc 08/07/2014, không lọc & 18.360 khách, 4.592 khách mức Cao (25,0\%) & Đạt \\
+TC02 & Chỉ giữ hạng A (tắt hạng B và C ở bộ lọc) & 5.137 khách, 1.285 khách mức Cao & Đạt \\
+TC03 & Giữ hạng A và nhóm N1 & 4.280 khách & Đạt \\
+TC04 & Giữ đồng thời hạng A và B & Tỷ lệ mức Cao là 25,0\% (1.931/7.718), tính lại trên số khách, không hiển thị 50,0\% (cộng hai tỷ lệ) & Đạt \\
+\midrule
+\multicolumn{4}{l}{\textit{Màn hình 2: Hồ sơ khách hàng}} \\
+TC05 & Tra mã khách 26339 & RiskScore 0,963, TreeScore 0,586, mức Cao, lá 5, cờ lệch & Đạt, hiện khối ``Cần xem xét thêm'' \\
+TC06 & Tra mã khách 26774 & RiskScore 0,049, mức Thấp, lá 8, không gắn cờ & Đạt, hiện ``Hai mô hình thống nhất'' \\
+TC07 & Nhập mã trong khoảng 11000 đến 29483 nhưng không có trong dữ liệu (11136), rồi mã ngoài khoảng hoặc có chữ cái & Thông báo không tìm thấy khách, ứng dụng không báo lỗi hệ thống & Đạt, có lưu ý. Mã 11136 cho ``Không có khách này tại mốc chấm điểm''. Mã ngoài khoảng hoặc có chữ bị ô nhập số từ chối bằng thông báo tiếng Anh mặc định của Streamlit, giá trị không được áp dụng \\
+\midrule
+\multicolumn{4}{l}{\textit{Màn hình 3: Phân tích kịch bản}} \\
+TC08 & Kịch bản cơ sở: $r$ = 10\%, $c$ = 10 USD, $B$ = 40.000 USD & 4.000 khách, chi phí 40.000 USD, $Z$ = 292.595 USD, $r$ hiển thị dạng 10\% & Đạt \\
+TC09 & Tăng $B$ lên 100.000 USD, giữ $r$, $c$ & 8.554 khách, chi phí 85.540 USD (không dùng hết ngân sách), $Z$ = 386.235 USD & Đạt \\
+TC10 & Tăng $r$ lên 20\%, giữ $c$, $B$ & Vẫn 4.000 khách, $Z$ = 625.189 USD & Đạt \\
+TC11 & Tìm mục tiêu với $Z^{*}$ = 0, rồi $Z^{*}$ = 100.000 USD & $r^{*}$ lần lượt là 1,20\% và 4,21\% & Đạt \\
+TC12 & Lưu kịch bản hiện tại, sau đó bấm xoá kịch bản đã lưu & Có thông báo khi lưu, kịch bản xuất hiện trong bảng so sánh, xoá được & Đạt, có lưu ý. Nút xoá xoá tất cả kịch bản đã lưu, không xoá riêng một kịch bản, và không có thông báo khi xoá \\
+\midrule
+\multicolumn{4}{l}{\textit{Màn hình 4: Danh sách chăm sóc}} \\
+TC13 & Bật chi phí theo kênh (mặc định đã bật), $B$ = 40.000 USD & 6.124 khách (R3: 983, R4: 0, R5: 5.141), chi phí 39.998 USD, $Z$ = 256.502 USD & Đạt \\
+TC14 & Bớt khách 26339, ghi lý do & Còn 6.123 khách, $Z$ = 256.394 USD, nhật ký điều chỉnh có một dòng mới kèm lý do & Đạt \\
+TC15 & Bớt một khách, để trống lý do & Không cho xuất CSV, có thông báo yêu cầu nhập lý do & Đạt, có lưu ý. Nút xuất CSV bị khoá và hiện ``Chưa có lý do điều chỉnh''. Hệ thống không có bước xác nhận riêng \\
+TC16 & Thêm khách 12201 (giá trị kỳ vọng $\leq 0$) & Cảnh báo khách vi phạm quy tắc R2 & Đạt sau khi sửa. Lần chạy đầu không có cảnh báo, nhóm đã thêm cảnh báo ``Vi phạm quy tắc R2'' ở màn hình 4 rồi chạy lại \\
+TC17 & Ở trạng thái TC13, thêm khách 14141 (giá trị kỳ vọng dương, chưa được chọn) & Cảnh báo vượt ngân sách $B$ & Đạt, chi phí 40.023 USD, hiện ``Vượt ngân sách 40.000 USD'' \\
+TC18 & Thêm một mã đã có trong danh sách (26339), sau đó một mã không có trong dữ liệu (11136) & Thông báo lỗi cho từng trường hợp, danh sách không đổi & Đạt, danh sách vẫn 6.124 khách, $Z$ = 256.502 USD \\
+TC19 & Lấy nội dung tệp CSV sau TC14 & Số dòng bằng số khách trên màn hình cộng một dòng khách bị bớt, tiếng Việt hiển thị đúng, có cột lý do điều chỉnh & Đạt, có lưu ý. 6.124 dòng dữ liệu gồm 6.123 khách và một dòng ``Bớt thủ công (không chăm sóc)'' \\
+\midrule
+\multicolumn{4}{l}{\textit{Phân quyền theo vai trò (Bảng~\ref{tab:quyen})}} \\
+TC20 & Chọn vai trò Quản lý Marketing/Sales & Mở đầu ở màn hình 1, có nút xuất CSV và mục đề xuất quy tắc & Đạt \\
+TC21 & Chọn vai trò Nhân viên phân tích dữ liệu & Mở đầu ở màn hình 5, màn hình 4 không có nút xuất CSV & Đạt \\
+TC22 & Chọn vai trò Nhân viên chăm sóc khách hàng & Mở đầu ở màn hình 4, có nút xuất CSV, không có mục đề xuất quy tắc & Đạt \\
+\midrule
+\multicolumn{4}{l}{\textit{Màn hình 5: Theo dõi mô hình và quy tắc}} \\
+TC23 & Mở các tab của màn hình 5 tại mốc 08/07/2014 & Không hiển thị ``nan''. ROC-AUC chỉ hiện ở bốn mốc đã đủ nhãn, Naive Bayes ghi ``đang dùng'' và được tô đậm & Đạt, không có ``nan'' ở cả năm tab \\
+TC24 & Đề xuất một quy tắc mới, bấm ``Gửi duyệt'' & Có phản hồi, quy tắc ở trạng thái chờ duyệt (chưa lưu vào kho, đúng giới hạn của bản demo) & Đạt \\
+\midrule
+\multicolumn{4}{l}{\textit{Đối chiếu giao diện với kho}} \\
+TC25 & Đếm khách mức Cao trong \texttt{analytics.\allowbreak CustomerRiskScore} (mốc 08/07/2014, phiên bản đang dùng) bằng SQL & Bằng 4.592, khớp màn hình 1 (TC01) & Đạt, truy vấn trả về 4.592 trên 18.360 khách của phiên bản \texttt{NB\_T20140301\_v1} \\
+\end{longtable}
+}

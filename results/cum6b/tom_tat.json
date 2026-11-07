@@ -1,0 +1,192 @@
+{
+ "apriori": {
+  "N": 18360,
+  "so_danh_muc": 17,
+  "min_sup": 0.01,
+  "min_conf": 0.2,
+  "tap": {
+   "1": 17,
+   "2": 55,
+   "3": 48,
+   "4": 6
+  },
+  "so_luat": 164,
+  "so_luat_2": 37,
+  "so_luat_conf50": 39,
+  "so_luat_goi_y": 26,
+  "top": [
+   {
+    "A": "Road Bikes + Touring Bikes",
+    "B": "Helmets + Mountain Bikes",
+    "sup": 0.0133,
+    "conf": 0.4529,
+    "lift": 6.034
+   },
+   {
+    "A": "Tires and Tubes + Touring Bikes",
+    "B": "Helmets + Mountain Bikes",
+    "sup": 0.0117,
+    "conf": 0.4127,
+    "lift": 5.498
+   },
+   {
+    "A": "Road Bikes + Touring Bikes",
+    "B": "Bottles and Cages + Mountain Bikes",
+    "sup": 0.0108,
+    "conf": 0.366,
+    "lift": 5.467
+   }
+  ],
+  "top_goi_y": [
+   {
+    "A": "Shorts",
+    "B": "Caps",
+    "sup": 0.0136,
+    "conf": 0.2473,
+    "lift": 2.155
+   },
+   {
+    "A": "Shorts",
+    "B": "Jerseys",
+    "sup": 0.0203,
+    "conf": 0.368,
+    "lift": 2.131
+   },
+   {
+    "A": "Hydration Packs",
+    "B": "Bottles and Cages",
+    "sup": 0.0192,
+    "conf": 0.4986,
+    "lift": 2.034
+   },
+   {
+    "A": "Mountain Bikes",
+    "B": "Fenders",
+    "sup": 0.0485,
+    "conf": 0.2189,
+    "lift": 1.921
+   },
+   {
+    "A": "Bike Stands",
+    "B": "Tires and Tubes",
+    "sup": 0.0114,
+    "conf": 0.875,
+    "lift": 1.91
+   }
+  ],
+  "ung_vien": {
+   "R6": {
+    "co": true,
+    "hang": 94,
+    "hang_goi_y": 10,
+    "lift": 1.532,
+    "lift_don": 1.768,
+    "conf_don": 0.4116
+   },
+   "R6b": {
+    "co": true,
+    "hang": 101,
+    "hang_goi_y": 12,
+    "lift": 1.472,
+    "lift_don": 1.479,
+    "conf_don": 0.2548
+   },
+   "R7": {
+    "co": true,
+    "hang": 61,
+    "hang_goi_y": 4,
+    "lift": 1.921,
+    "lift_don": 2.354,
+    "conf_don": 0.1809
+   },
+   "R8": {
+    "co": true,
+    "hang": 89,
+    "hang_goi_y": 9,
+    "lift": 1.551,
+    "lift_don": 1.803,
+    "conf_don": 0.4197
+   },
+   "R8b": {
+    "co": true,
+    "hang": 53,
+    "hang_goi_y": 3,
+    "lift": 2.034,
+    "lift_don": 2.63,
+    "conf_don": 0.4529
+   }
+  },
+  "so_don": 27382
+ },
+ "abc_do_nhay": {
+  "80% / 95%": {
+   "A": 5137,
+   "B": 2581,
+   "C": 10642,
+   "Cao_A": 1285,
+   "Cao_B": 646,
+   "Cao_C": 2661,
+   "R3_du_dk": 1647,
+   "R3_chon": 983,
+   "R5_chon": 5141,
+   "so_chon": 6124,
+   "Z": 256502,
+   "chi": 39998,
+   "chenh_Z": 0,
+   "khach_doi_hang": 0
+  },
+  "70% / 90%": {
+   "A": 4019,
+   "B": 2539,
+   "C": 11802,
+   "Cao_A": 1005,
+   "Cao_B": 635,
+   "Cao_C": 2951,
+   "R3_du_dk": 1499,
+   "R3_chon": 934,
+   "R5_chon": 5546,
+   "so_chon": 6480,
+   "Z": 254700,
+   "chi": 39988,
+   "chenh_Z": -1802,
+   "khach_doi_hang": 2278
+  }
+ },
+ "quy_mo_y1": {
+  "ty_le": 0.8116,
+  "ty_trong_M": 0.7805,
+  "moc_cuoi": "01/03/2014",
+  "ty_le_cuoi": 0.8197,
+  "ty_trong_M_cuoi": 0.7855
+ },
+ "quay_lai": {
+  "so_don": 1.118,
+  "mot_don": 0.935,
+  "ty_so_tv": 0.87,
+  "gia_tri_quay_lai": 1427.0,
+  "aov_truoc": 1872.6
+ },
+ "g_nhom": {
+  "g": {
+   "Accessories": 0.626,
+   "Bikes": 0.4063,
+   "Clothing": 0.4015,
+   "Toàn bộ": 0.4115
+  },
+  "ty_trong": {
+   "Accessories": 0.0239,
+   "Bikes": 0.9645,
+   "Clothing": 0.0116,
+   "Toàn bộ": 1.0
+  },
+  "Z_chung": 292595,
+  "Z_nhom": 290014,
+  "trung": 0.997
+ },
+ "chua_den_ky": {
+  "o": 0.2617,
+  "Z": 205555,
+  "r_be": 0.0163
+ },
+ "R4_ngan_sach": 61213
+}

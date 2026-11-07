@@ -1,0 +1,8 @@
+build/
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz

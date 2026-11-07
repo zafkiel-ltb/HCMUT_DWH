@@ -1,0 +1,5 @@
+mo_hinh,AUC,Brier,Z_pv,fold_Z_hon_NB
+Naive Bayes rời rạc,0.7199,0.1252,291883.0973,0
+GB 11 thuộc tính + trọng số dịch chuyển,0.7549,0.1291,284604.2396,0
+GB 11 + nhân khẩu học + hành vi mới,0.811,0.1211,289916.1527,1
+Trung bình Naive Bayes và GB đủ,0.8223,0.1144,292148.9753,3

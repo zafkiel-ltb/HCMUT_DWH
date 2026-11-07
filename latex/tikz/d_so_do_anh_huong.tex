@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  dec/.style={draw, rectangle, minimum width=1.0cm, minimum height=0.7cm, font=\small},
+  var/.style={draw, circle, minimum size=1.0cm, inner sep=1pt, font=\small},
+  res/.style={draw, ellipse, minimum width=1.5cm, minimum height=0.9cm, font=\small},
+  cert/.style={-{Stealth[length=2mm]}},
+  risk/.style={-{Stealth[length=2mm]}, decorate, decoration={zigzag, amplitude=0.8pt, segment length=4pt}}]
+  \node[var] (g) at (0,3.6) {$g$};
+  \node[var] (aov) at (0,2.2) {$AOV_i$};
+  \node[var] (p) at (0,0.5) {$p_i$};
+  \node[var] (y) at (0,-1.0) {$\tilde{Y}_i$};
+  \node[var] (r) at (0,-2.5) {$r$};
+  \node[var] (v) at (3.0,3.0) {$v_i$};
+  \node[var] (R) at (6.0,0.4) {$R$};
+  \node[dec] (x) at (3.0,-3.0) {$x_i$};
+  \node[var] (B) at (0,-4.2) {$B$};
+  \node[var] (c) at (3.0,-5.2) {$c$};
+  \node[var] (C) at (6.0,-3.6) {$C$};
+  \node[res] (Z) at (9.2,-1.6) {$Z$};
+  \draw[cert] (g) -- (v);
+  \draw[cert] (aov) -- (v);
+  \draw[cert] (v) -- (R);
+  \draw[cert] (p) -- (y);
+  \draw[risk] (y) -- (R);
+  \draw[risk] (r) -- (R);
+  \draw[cert] (x) -- (R);
+  \draw[cert] (x) -- (C);
+  \draw[cert] (c) -- (C);
+  \draw[cert] (B) -- node[above, font=\scriptsize] {ràng buộc} (x);
+  \draw[cert] (R) -- (Z);
+  \draw[cert] (C) -- (Z);
+\end{tikzpicture}

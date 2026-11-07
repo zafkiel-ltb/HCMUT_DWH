@@ -1,0 +1,86 @@
+% Gộp Chương 1 và Chương 2 của tab "Chương 1 + 2 (Updated)" trên Google Doc vào 4 mục của mẫu
+\section{Tổng quan bài toán}
+\subsection{Bối cảnh và đặt vấn đề}
+Trong 19.119 khách hàng từng đặt đơn ở CompanyX, 60,93\% chỉ mua đúng một lần rồi không quay lại. Tính trên 18.995 khách có đơn đã giao, con số là 61,21\%. Số còn lại có mua lặp, nhưng trung vị khoảng cách giữa hai lần mua là 138 ngày. Một khách im lặng bốn tháng có thể chỉ đang nghỉ giữa hai lần mua, cũng có thể đã sang mua ở nơi khác, và dữ liệu không nói đó là trường hợp nào.
+
+CompanyX bán xe đạp, linh kiện và trang phục cho khách lẻ qua kênh trực tuyến và đại lý. Khách lẻ không ký hợp đồng nên không có ngày hết hạn để báo trước, họ chỉ mua thưa dần rồi dừng. Doanh thu lại dựa nhiều vào khách cũ quay lại, nên doanh nghiệp cần biết ai sắp rời đi trước khi họ dừng hẳn.
+
+Trả lời câu hỏi đó vướng ở bốn chỗ. Dữ liệu không có nhãn churn, không ai ghi lại khách nào đã bỏ đi. Số liệu tổng hợp tại một thời điểm không cho biết từng khách đang mua tăng, giữ hay giảm. Thông tin khách, đơn hàng và sản phẩm nằm rải ở nhiều bảng, lẫn cả khách cửa hàng, nên phải tổ chức lại mới tính được chỉ số cho đúng nhóm. Biết ai có nguy cơ vẫn chưa đủ, người quản lý còn phải chọn chăm sóc ai và chi bao nhiêu trong một ngân sách có hạn.
+
+Đề tài trả lời bằng ba phần nối nhau. Kho dữ liệu (Data Warehouse) tổ chức lại dữ liệu giao dịch theo từng khách cá nhân. Mô hình khai phá dữ liệu (Data Mining) học trên kho đó để ước lượng xác suất mỗi khách không mua lại trong kỳ tới. Hệ hỗ trợ ra quyết định (Decision Support System, DSS) đổi xác suất ấy thành danh sách khách nên chăm sóc trong ngân sách người quản lý đặt ra.
+
+\subsection{Mục tiêu nghiên cứu}
+Người ra quyết định là quản lý Marketing hoặc Sales. Mỗi kỳ, người này đặt ngân sách chăm sóc, chọn hướng giữ chân và duyệt danh sách khách cần liên hệ. Nhân viên phân tích dữ liệu đưa căn cứ cho quyết định đó, nhân viên chăm sóc khách hàng liên hệ khách theo danh sách đã duyệt. Đề tài làm để người quản lý ấy trả lời được bốn câu hỏi:
+\begin{enumerate}[label=\arabic*.]
+    \item Khách hàng nào có nguy cơ rời bỏ?
+    \item Hành vi mua của khách hàng thay đổi thế nào theo thời gian?
+    \item Khách hàng nào cần được ưu tiên giữ chân?
+    \item Nên xem xét biện pháp chăm sóc nào cho từng nhóm khách hàng?
+\end{enumerate}
+
+Ba mục tiêu nối tiếp nhau đi theo bốn câu hỏi đó. Trước hết là kho dữ liệu theo mô hình chiều, dựng từ cơ sở dữ liệu tác nghiệp, làm nền cho mọi phân tích phía sau. Trên kho, mục tiêu thứ hai là mô hình dự đoán khách nào không quay lại. Dữ liệu không có nhãn, nên nhóm tự đặt luật: khách không phát sinh đơn nào trong 90 ngày sau mốc quan sát được gán nhãn có nguy cơ. Mô hình được đo bằng ma trận nhầm lẫn, accuracy, tỷ lệ lỗi, precision, recall, specificity, F1, ROC-AUC và điểm Brier. Mục tiêu thứ ba là DSS ghép nguy cơ với giá trị khách để chọn ai được chăm sóc khi ngân sách có hạn. DSS không được chấm bằng độ chính xác mà bằng giá trị ròng kỳ vọng $Z$ của danh sách nó chọn ra, vì thứ DSS phải làm tốt là quyết định.
+
+\subsection{Giải pháp tổng thể: hướng tiếp cận bài toán churn}
+Trong báo cáo này ``khách rời bỏ'' (customer churn) là khách không mua lại trong 90 ngày sau mốc quan sát (mục 4.3). Định nghĩa này hẹp hơn nghĩa thường: khách bị gắn nhãn hôm nay vẫn có thể quay lại trong ba tháng sau đó, và Bảng~\ref{tab:giaithachthuc} cho thấy trung bình 26,2\% trong số họ làm đúng như vậy. Nhóm chấp nhận độ nhiễu này vì khách bán lẻ không báo khi ngừng mua, và từ dữ liệu giao dịch không có cách nào khác để có nhãn.
+
+Hướng giải đi theo năm bước nối nhau (Hình~\ref{fig:huongtiepcan}), mỗi bước là một chương, kết quả của bước trước là đầu vào của bước sau. Ba thành phần ở mục 1.1 nằm trên chuỗi đó: kho dữ liệu lo phần tổ chức, mô hình lo phần chấm điểm, DSS lo phần chọn khách. Bảng~\ref{tab:giaithachthuc} đối chiếu từng thách thức với thành phần giải nó, kết quả thu được và chương trình bày. Một số mô hình và kỹ thuật trong đó nằm ngoài nội dung môn học, tổng hợp ở mục~\ref{sec:bonus}.
+
+\begin{figure}[!htbp]
+\centering
+\input{tikz/huong_tiep_can}
+\caption{Năm bước giải bài toán churn và chương trình bày từng bước}
+\label{fig:huongtiepcan}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\caption{Bốn thách thức của bài toán churn, thành phần giải và kết quả}
+\label{tab:giaithachthuc}
+\footnotesize
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{1.5cm}}
+\toprule
+Thách thức & Thành phần giải & Cách giải & Kết quả chính & Trình bày ở \\
+\midrule
+Dữ liệu chưa có nhãn churn & Khai phá dữ liệu & Tự đặt luật nhãn: khách không đặt đơn nào trong 90 ngày sau một mốc thì có nguy cơ rời bỏ, chia tập học và tập thử theo thời gian & 19 mốc có nhãn đầy đủ. Nhãn còn nhiễu: trung bình 26,2\% khách bị gắn nhãn vẫn mua lại trong ngày 90 đến 180 & Chương 4, 5 và 7 \\
+Số liệu tại một thời điểm không cho thấy xu hướng & Kho dữ liệu, khai phá dữ liệu & Bảng Snapshot chụp hành vi từng khách tại 20 mốc, rồi chia khách thành năm nhóm hành vi và ba hạng giá trị & 196.985 dòng Snapshot. Khách chỉ mua một đơn giảm từ 100\% xuống 63,2\% tại mốc chấm điểm & Chương 3, 4 và 6 \\
+Dữ liệu rải rác, lẫn khách đại lý & Kho dữ liệu & Kho hình sao, quy trình ETL 11 bước, chỉ giữ khách cá nhân, kiểm tra chất lượng sau khi nạp & 18.484 khách cá nhân, 27.382 đơn. 65 phép kiểm tra đều đạt & Chương 3 \\
+Biết nguy cơ chưa đủ để chọn ai & Hệ hỗ trợ ra quyết định & Kết hợp xác suất với giá trị khách thành giá trị ròng kỳ vọng $Z$, chọn khách trong ngân sách, thử giả định (what-if), gợi ý kênh chăm sóc theo quy tắc & Kịch bản cơ sở (ngân sách 40.000 USD): 4.000 khách, $Z$ = 292.595 USD. Kết quả này theo tỷ lệ thành công giả định 10\% & Chương 5 và 6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Phạm vi nghiên cứu}
+\begin{itemize}
+    \item \textbf{Đối tượng:} 18.484 khách hàng cá nhân. Mọi đơn của nhóm này đặt trực tuyến (cờ \texttt{OnlineOrderFlag} bằng 1). Khách đại lý bị loại vì họ nhập hàng theo chu kỳ B2B, nhịp mua của họ không nói gì về chuyện người tiêu dùng có quay lại hay không.
+    \item \textbf{Dữ liệu:} đơn hàng từ 31/05/2011 đến 30/06/2014. Lịch sử chia thành giai đoạn quan sát và giai đoạn kiểm tra mua lại, nên khi dự đoán mô hình chỉ được nhìn quá khứ.
+    \item \textbf{Phân tích:} ba đặc trưng hành vi Recency, Frequency và Monetary (RFM), thêm hai thuộc tính về sản phẩm đã mua là BikeBuyer (đã mua xe đạp hay chưa) và NSub (số nhóm sản phẩm đã mua). Mô hình chấm điểm dùng năm thuộc tính này, các mô hình đối chứng dùng cả 11 thuộc tính của bảng Snapshot (Chương 4). Tất cả tính được từ riêng dữ liệu giao dịch. Cơ sở dữ liệu gốc còn có nhân khẩu học, vùng bán hàng và lý do mua, phiên bản này chưa đưa vào kho, Chương 7 thử riêng phần đó.
+    \item \textbf{Công nghệ:} SQL Server và T-SQL cho kho và quy trình ETL, nguồn với kho ở cùng một nền tảng. Python (pandas, scikit-learn) cho mô hình, Streamlit cho giao diện DSS.
+    \item \textbf{Ranh giới:} hệ thống xếp hạng khách và đề xuất chia ngân sách, không tự gửi tin nhắn đến khách. Khách có thật sự ở lại hay không chỉ biết được sau khi triển khai, báo cáo này không đo được điều đó.
+\end{itemize}
+
+\subsection{Mô tả tập dữ liệu}
+Cơ sở dữ liệu tác nghiệp \texttt{CompanyX} có 72 bảng trong 6 schema, đề tài chỉ chạm tới 9 bảng về hành vi mua (Bảng~\ref{tab:bang_nguon}). Đơn hàng trải 37 tháng với 31.465 đơn, 121.317 dòng chi tiết và tổng thanh toán 123,16 triệu USD. Bảng \texttt{Customer} có 19.820 bản ghi, 701 trong số đó chưa từng đặt đơn.
+
+\begin{table}[!htbp]
+\centering\footnotesize
+\caption{Các bảng nguồn được sử dụng trong đề tài}
+\label{tab:bang_nguon}
+\begin{tabular}{lr>{\raggedright\arraybackslash}p{7.8cm}}
+\toprule
+\textbf{Bảng nguồn} & \textbf{Số dòng} & \textbf{Nội dung} \\
+\midrule
+\texttt{Sales.SalesOrderHeader} & 31.465 & Thông tin chung của đơn hàng: khách hàng, ngày đặt, ngày giao, trạng thái, tổng tiền \\
+\texttt{Sales.SalesOrderDetail} & 121.317 & Chi tiết từng sản phẩm trong đơn: số lượng, đơn giá, chiết khấu \\
+\texttt{Sales.Customer} & 19.820 & Danh sách khách hàng, phân biệt khách cá nhân và cửa hàng \\
+\texttt{Person.Person} & 19.972 & Họ tên của khách hàng cá nhân \\
+\texttt{Sales.SalesTerritory} & 10 & Khu vực bán hàng và nhóm quốc gia \\
+\texttt{Sales.SpecialOffer} & 16 & Chương trình khuyến mãi áp dụng cho dòng đơn \\
+\texttt{Production.Product} & 504 & Danh mục sản phẩm \\
+\texttt{Production.ProductSubcategory} & 37 & Tiểu loại sản phẩm \\
+\texttt{Production.ProductCategory} & 4 & Loại sản phẩm: Bikes, Components, Clothing, Accessories \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Hai thứ dữ liệu không có. Không có nhãn churn, nên nhãn phải suy từ luật 90 ngày ở mục 1.2. Không có dữ liệu chăm sóc khách hàng (CRM) hay lịch sử chiến dịch, nên tỷ lệ khách quay lại nhờ được chăm sóc và chi phí mỗi lần liên hệ đều là tham số giả định. Người quản lý chỉnh hai tham số này ngay trên giao diện DSS, và mọi con số giá trị ròng trong báo cáo đều đứng trên giả định đó.

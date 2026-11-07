@@ -1,0 +1,6 @@
+quy_tac,A,B,support,confidence,lift,chap_nhan
+R6,Touring Bikes,Helmets,0.0569,0.4925,1.5317,True
+R6b,Touring Bikes,Bottles and Cages,0.0417,0.3608,1.4723,True
+R7,Mountain Bikes,Fenders,0.0485,0.2189,1.9206,True
+R8,Gloves,Helmets,0.0371,0.4985,1.5506,True
+R8b,Hydration Packs,Bottles and Cages,0.0192,0.4986,2.0342,True

@@ -1,0 +1,98 @@
+% Báo cáo bài tập lớn TA_DSS - biên dịch bằng pdflatex (MiKTeX hoặc Overleaf)
+% Bố cục và trang bìa dựa theo mẫu trong latex_mau/
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{booktabs, array, multirow, longtable}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\usepackage{caption, subcaption}
+\captionsetup{justification=centering, font=small, labelfont=bf, skip=6pt}
+\captionsetup[sub]{justification=centering, font=footnotesize}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc, positioning, arrows.meta, decorations.pathmorphing, shapes.geometric}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\addto\captionsvietnamese{\renewcommand{\refname}{Tài liệu tham khảo}\renewcommand{\listfigurename}{Danh sách hình}\renewcommand{\listtablename}{Danh sách bảng}}
+
+\geometry{margin=2.5cm}
+\linespread{1.0}
+\emergencystretch=3em
+% Kiểm soát cắt trang: không để dòng lẻ đầu/cuối đoạn, cho phép trang cuối chương không kín
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\predisplaypenalty=10000
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setlength{\parindent}{17pt}
+\setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\graphicspath{{IMAGE/}}
+
+% Header có logo trường, giống mẫu
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{%
+  \begin{tabular}{rl}
+    \includegraphics[width=10mm]{logo_hcmut.png} &
+    \parbox[b]{14cm}{%
+      \textbf{\ttfamily TRƯỜNG ĐẠI HỌC BÁCH KHOA - ĐHQG-HCM}\\[0.3pt]
+      \textbf{\ttfamily KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH}
+    }
+  \end{tabular}%
+}
+
+\begin{document}
+
+\input{0_bia}
+
+\input{0_phan_cong}
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+
+\clearpage
+\input{1_tong_quan}
+\clearpage
+\input{2_co_so_ly_thuyet}
+\clearpage
+\input{3_etl}
+\clearpage
+\input{4_tien_xu_ly_eda}
+\clearpage
+\input{5_mo_hinh}
+\clearpage
+\input{6_dss}
+\clearpage
+\input{7_danh_gia}
+\clearpage
+\input{8_ket_luan}
+
+\newpage
+\input{tltk}
+
+\clearpage
+\appendix
+\input{9_phu_luc}
+
+\end{document}
