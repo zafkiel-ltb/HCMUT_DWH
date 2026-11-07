@@ -8,7 +8,7 @@ Người mới nhận việc đọc `BAN_GIAO.md` trước (quy tắc, thiết k
 
 | Sản phẩm | Ở đâu |
 |---|---|
-| Báo cáo (76 trang, chương 1 đến 8, phụ lục A và B) | `latex/main.pdf`, nguồn trong `latex/` |
+| Báo cáo (73 trang, chương 1 đến 8) | `latex/main.pdf`, nguồn trong `latex/` |
 | Kho dữ liệu `CompanyX_DW` và ETL T-SQL | `sql/`, bản sao lưu `backup/*.bak` |
 | Chuỗi phân tích (nhãn, huấn luyện, chấm điểm, DSS) | `python/phan_tich/cum*.py`, kết quả trong `results/` |
 | Giao diện DSS 5 màn hình (Streamlit) | `python/app_dss.py` |
@@ -18,7 +18,7 @@ Người mới nhận việc đọc `BAN_GIAO.md` trước (quy tắc, thiết k
 
 | Thư mục | Nội dung | Lên git? |
 |---|---|---|
-| `latex/` | Nguồn báo cáo: `main.tex`, `0_bia` đến `9_phu_luc`, `tltk.tex`, bảng sinh tự động trong `bang/`, hình trong `IMAGE/`, sơ đồ TikZ trong `tikz/` | Có (trừ `main.pdf` và file build) |
+| `latex/` | Nguồn báo cáo: `main.tex`, `0_bia` đến `8_ket_luan`, `tltk.tex`, bảng sinh tự động trong `bang/`, hình trong `IMAGE/`, sơ đồ TikZ trong `tikz/` | Có (trừ `main.pdf` và file build) |
 | `sql/` | Dựng kho, ETL, Snapshot, bảng DSS, script kiểm tra và reset | Có |
 | `python/` | `config.py` (kết nối và hằng số), `models_def.py`, `app_dss.py` (giao diện), và ba thư mục con: `phan_tich/` chuỗi `cum3b` → `cum4` → `cum4b` → `cum4c` → `cum5` → `cum6` → `cum6b`, `bao_cao/` script sinh bảng (`tao_bang_tex_*.py`) và hình (`ve_*.py`), `kiem_chung/` notebook kiểm chứng trên kho và script chụp màn hình | Có |
 | `results/` | Bảng, hình, SQL do chuỗi phân tích sinh ra, mỗi cụm một thư mục | Có |

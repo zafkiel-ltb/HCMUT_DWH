@@ -491,7 +491,7 @@ STT & Đặc điểm & Bằng chứng \\
 \end{table}
 
 \subsubsection{Đánh giá khả dụng}\label{sec:nielsen}
-Khả dụng gồm ba mặt là hiệu quả, hiệu suất và mức hài lòng~\cite{iso9241}. Nhóm rà soát nội bộ giao diện theo 10 nguyên tắc của Nielsen~\cite{nielsen1994} (Bảng~\ref{tab:nielsen}, Phụ lục~\ref{sec:pl_nielsen}), gọi là nội bộ vì do chính nhóm làm, không phải chuyên gia độc lập. Nhóm tìm ra 18 vấn đề, đã sửa 14, còn 4 vấn đề nhẹ hoặc thuộc giới hạn phạm vi. Hai vấn đề cuối (số 17 và 18) được phát hiện sau đợt rà soát đầu, khi kiểm thử chức năng ở mục~\ref{sec:kiemthu}. Hai vấn đề nặng nhất (mức 3) đều đã sửa. Ứng dụng có tab Hướng dẫn sử dụng gồm năm bước và các câu hỏi thường gặp. Nhóm chưa thử với người dùng thật nên chưa kết luận về mức hài lòng.
+Khả dụng gồm ba mặt là hiệu quả, hiệu suất và mức hài lòng~\cite{iso9241}. Nhóm rà soát nội bộ giao diện theo 10 nguyên tắc của Nielsen~\cite{nielsen1994}, gọi là nội bộ vì do chính nhóm làm, không phải chuyên gia độc lập. Nhóm tìm ra 18 vấn đề, đã sửa 14, còn 4 vấn đề nhẹ hoặc thuộc giới hạn phạm vi. Hai vấn đề cuối (số 17 và 18) được phát hiện sau đợt rà soát đầu, khi kiểm thử chức năng ở mục~\ref{sec:kiemthu}. Hai vấn đề nặng nhất (mức 3) đều đã sửa. Ứng dụng có tab Hướng dẫn sử dụng gồm năm bước và các câu hỏi thường gặp. Nhóm chưa thử với người dùng thật nên chưa kết luận về mức hài lòng.
 
 Giới hạn còn lại của DSS: R1, R9 và nhóm đối chứng cần dữ liệu CRM, và chức năng đề xuất quy tắc mới ở màn hình 5 mới là bản trình diễn, chưa lưu vào kho. Các hạn chế này được tổng hợp ở Chương 7.
 
@@ -505,7 +505,7 @@ Kết quả mong đợi lấy từ các tệp kết quả đã tính ở Chươn
     \item \textbf{Bảng quyết định:} phân quyền theo ba vai trò ở Bảng~\ref{tab:quyen}, mỗi vai trò một ca.
     \item \textbf{Đối chiếu với kho:} con số trên giao diện phải khớp với truy vấn SQL trên các bảng analytics.
 \end{itemize}
-Mọi ca dùng mốc chấm điểm 08/07/2014 và phiên bản Naive Bayes đang dùng. Các ca TC01 đến TC24 chạy ở chế độ mặc định của ứng dụng (đọc tệp kết quả đã xuất), còn TC25 đối chiếu số trên màn hình với kho. Bảng~\ref{tab:kiemthu} ở Phụ lục~\ref{sec:pl_kiemthu} liệt kê đủ 25 ca theo năm màn hình, phân quyền và đối chiếu dữ liệu, kèm kết quả quan sát của từng ca.
+Mọi ca dùng mốc chấm điểm 08/07/2014 và phiên bản Naive Bayes đang dùng. Các ca TC01 đến TC24 chạy ở chế độ mặc định của ứng dụng (đọc tệp kết quả đã xuất), còn TC25 đối chiếu số trên màn hình với kho. Bộ 25 ca chia theo năm màn hình, phân quyền và đối chiếu dữ liệu. Bảng chi tiết từng ca kèm kết quả quan sát nằm trong tài nguyên nộp kèm báo cáo.
 
 Nhóm đã chạy đủ 25 ca. Lần chạy đầu có hai ca không khớp mong đợi. Ca TC16 thật sự thiếu chức năng nên nhóm sửa ứng dụng và chạy lại thì đạt. Ca TC23 có mong đợi viết cho thiết kế cũ (thẻ hiệu năng riêng cho mốc chấm điểm), nên nhóm đổi mong đợi theo thiết kế hiện tại, khi đó ca này đạt. Kết quả cuối: 21 ca đạt và 4 ca đạt có lưu ý (TC07, TC12, TC15 và TC19). Bốn lưu ý đều là chênh lệch nhỏ giữa mô tả và cách ứng dụng hoạt động, không ca nào cho số liệu sai.
 

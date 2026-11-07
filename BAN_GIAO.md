@@ -4,7 +4,7 @@ File này thay cho `HANDOVER.md`, `docs/VAN_DE_CON_LAI.md` và các handover v4,
 
 ## 0. Trạng thái hiện tại
 
-- **Báo cáo chính thức là bản LaTeX** trong `latex/`, không còn sửa Google Doc. Bản dựng `latex/main.pdf` 76 trang: trang phân công, mục lục, danh sách hình và bảng, chương 1 đến 8, tài liệu tham khảo, khai báo dùng AI, Phụ lục A (bảng Nielsen 18 mục) và B (25 ca kiểm thử).
+- **Báo cáo chính thức là bản LaTeX** trong `latex/`, không còn sửa Google Doc. Bản dựng `latex/main.pdf` 73 trang: trang phân công, mục lục, danh sách hình và bảng, chương 1 đến 8, tài liệu tham khảo, khai báo dùng AI. Phụ lục (bảng Nielsen 18 mục, 25 ca kiểm thử) đã bỏ ngày 07/11 theo quyết định của Bảo, bảng kiểm thử vẫn ở `docs/KET_QUA_KIEM_THU.md`, bảng Nielsen lấy lại được từ `latex/9_phu_luc.tex` trong lịch sử git.
 - Biên dịch sạch: 0 lỗi, 0 tham chiếu `??`, mọi hình và bảng đều được nhắc trong thân bài, thân bài không có dấu chấm phẩy.
 - App DSS chạy được với `results/cum6/dss_khach.csv`, đã chạy 25 ca kiểm thử của nhóm (21 đạt, 4 đạt có lưu ý).
 - Toàn bộ đã đẩy lên GitHub ngày 07/11/2026 trong một commit duy nhất (lịch sử cũ đã gộp lại). Xem mục 7.
@@ -63,7 +63,7 @@ File này thay cho `HANDOVER.md`, `docs/VAN_DE_CON_LAI.md` và các handover v4,
 ### `latex/`
 | File | Nội dung |
 |---|---|
-| `main.tex` | Preamble, thứ tự ghép: bìa, phân công, mục lục, 8 chương, `tltk`, phụ lục |
+| `main.tex` | Preamble, thứ tự ghép: bìa, phân công, mục lục, 8 chương, `tltk` |
 | `0_bia.tex`, `0_phan_cong.tex` | Bìa. Bảng thành viên và % đóng góp (cột công việc và % **để trống**, nhóm điền) |
 | `1_tong_quan.tex` | Bối cảnh, mục tiêu, giải pháp tổng thể (Bảng 1, Hình 1 TikZ), phạm vi, dữ liệu |
 | `2_co_so_ly_thuyet.tex` | Kho dữ liệu, OLAP, DSS, khai phá dữ liệu, RFM và ABC. Hình 3, 6, 7 vẽ TikZ |
@@ -73,8 +73,7 @@ File này thay cho `HANDOVER.md`, `docs/VAN_DE_CON_LAI.md` và các handover v4,
 | `6_dss.tex` | Thiết kế DSS (6.1 đến 6.5) và hiện thực (6.6: người dùng, công nghệ, demo, 4 đặc điểm DSS, khả dụng, kiểm thử) |
 | `7_danh_gia.tex` | Đánh giá kho, mô hình (so quy tắc, chỉ số theo cách DSS dùng, dư địa), DSS, hạn chế |
 | `8_ket_luan.tex` | Kết luận, đóng góp, 8.2.1 kỹ thuật ngoài môn học, hướng phát triển |
-| `tltk.tex` | 25 tài liệu tham khảo và mục "Khai báo sử dụng công cụ AI" |
-| `9_phu_luc.tex` | Phụ lục A bảng Nielsen, Phụ lục B 25 ca kiểm thử |
+| `tltk.tex` | 26 tài liệu tham khảo và mục "Khai báo sử dụng công cụ AI" |
 | `bang/` | Bảng sinh tự động. Tiền tố `etl_` chương 3, không tiền tố chương 4, `m_` chương 5 và 7, `d_` chương 6 |
 | `IMAGE/` | Hình. `eda_*` chương 4, `m_*` chương 5 và 7, `d_*` chương 6, `slide/` 5 hình lấy từ slide môn học, `logo_hcmut.png` |
 | `tikz/` | Sơ đồ vẽ tay: `huong_tiep_can` (chương 1), `d_so_do_anh_huong`, `d_luong_quy_tac`, `d_uims` (chương 6) |
@@ -133,7 +132,7 @@ Thứ tự chạy và kết quả mong đợi từng bước ở `docs/README_TH
 ### Cần nhóm quyết (không tự làm)
 1. **Điền bảng % đóng góp** ở `latex/0_phan_cong.tex` (môn bắt buộc, Lecture 0 slide 12 và 13). Cũng cần file danh sách riêng trong zip nộp.
 2. **Khai báo công cụ hỗ trợ** trong `tltk.tex`: nhóm đọc lại bảng khai báo, xác nhận danh sách công cụ và câu chữ đúng với thực tế đã dùng, bổ sung nếu thiếu. Nhóm nên đọc lại chương 5 đến 8 và viết bằng lời mình những phần sẽ bị hỏi khi vấn đáp.
-3. **Tài liệu tham khảo:** Han ghi 2011 hay 2012, có cần giữ cả hai bản Turban (2005 và 2011), chỗ dùng cụ thể của Elmasri, Empire, Inmon, Kimball. Peduzzi, Buckinx, Neslin, Sharda 1988 cố ý không đưa vào vì chưa chắc đã đọc.
+3. **Tài liệu tham khảo** (đã rà ngày 07/11): Han 3rd ed. ghi 2011 (năm phát hành, bản in ghi bản quyền 2012). Giữ cả hai bản Turban vì trích cho việc khác nhau: Turban và Aronson 2005 (14 đặc điểm, 4 thành phần, 4 kiểu phân tích, có trong danh sách tham khảo của môn) và Turban, Sharda, Delen 2011 (quyết định bán cấu trúc, pha Simon, quy hoạch, mô phỏng, phân hệ giao diện). Môn dùng bản mới hơn của sách này (Sharda, Delen, Turban 2020, bản 7), ai có bản 2020 thì đối chiếu lại các chỗ trích rồi đổi. Elmasri, Inmon, Kimball đều nằm trong danh sách tham khảo của môn và trích đúng nội dung (kiến trúc kho, bốn đặc trưng của Inmon, mô hình hoá chiều). Đã bỏ nguồn web Empire Data Systems (trang dạy SQL Server, không phải nguồn học thuật), thay bằng Han cho mô hình bông tuyết và tài liệu môn học cho hình OLAP. Đã thêm Buckinx và Van den Poel 2005 (chương 2, rời bỏ một phần trong bán lẻ không hợp đồng, RFM dự báo tốt nhất) và Neslin và cộng sự 2006 (chương 4, mô hình churn giữ độ chính xác sau ba tháng), hai câu trích chỉ nói đúng nội dung tóm tắt bài báo. Không thêm Peduzzi 1996 (về cỡ mẫu hồi quy logistic, bài không bàn) và Sharda 1988 (thí nghiệm hiệu quả DSS trong lớp học, không có chỗ dùng).
 4. **Góp ý trong sheet của nhóm chưa làm:** phần OLAP thực tế ở chương 3 (Thương bổ sung), Related work survey, làm nổi bật phần bonus trong mục lục.
 5. **Slide trình bày 10 phút và kịch bản demo.** Kịch bản demo có ở mục 6.6.3.
 6. **Trang câu hỏi vấn đáp:** vì sao Naive Bayes mà không phải cây, vì sao phân vị trong từng hạng ABC, vì sao accuracy chỉ 0,379 ở mức Cao, vì sao nhãn 90 ngày, Z là gì, vì sao ROC-AUC chỉ ngang Recency mà vẫn dùng mô hình.
@@ -147,7 +146,7 @@ Thứ tự chạy và kết quả mong đợi từng bước ở `docs/README_TH
 - Dữ liệu kết thúc 30/06/2014 nên không có nhãn thật sau mốc 08/07/2014, không kiểm chứng ngoài mẫu được.
 
 ### Việc kỹ thuật nhỏ, làm khi rảnh
-- Còn khoảng 13 bảng dùng `\resizebox` co chữ nhẹ (0,79 đến 1,2 lần). Bảng kiểm thử ở Phụ lục B tràn lề 12pt, không thấy khi in.
+- Còn khoảng 13 bảng dùng `\resizebox` co chữ nhẹ (0,79 đến 1,2 lần).
 - Mục 6.3.2 (K-means) còn lặp các bước đã nêu ở 6.1.
 - Thông báo lỗi tiếng Anh của Streamlit ở ô nhập mã khách (Nielsen mục 18) chưa xử lý.
 - `python/app_dss.py` còn số bảng cũ của Google Doc trong docstring (dòng 2 và chú thích gần dòng 546), không hiện ra giao diện.
@@ -159,7 +158,7 @@ Ngày 07/11/2026 toàn bộ repo được gộp thành một commit mới trên 
 
 - Chương 1 đến 8: mọi số lớn truy được về `results/`, kho `CompanyX_DW` hoặc CSDL nguồn. ROC-AUC, Brier, Z, ma trận nhầm lẫn (tính lại độc lập từ `data/dataset.csv`), 26,2%, ABC, K-means, Apriori, what-if, kênh, dự báo đều khớp. Chỉ một số sửa khi rà: trung vị Monetary nhóm mua xe đạp 2.783,46.
 - Mọi mục trong `tltk.tex` đều được trích ít nhất một lần, mọi `\cite` có mục tương ứng. Đã tra web: Lemmens và Gupta 2020, Flores và Whybark 1986, Nielsen 1994.
-- Bố cục: 0 overfull trên 10pt ngoài Phụ lục B, không trang thưa, không hình hay bảng bị đẩy xa chỗ nhắc. Chương 1 và 2 không còn cảnh báo.
+- Bố cục: 0 overfull trên 10pt, không trang thưa, không hình hay bảng bị đẩy xa chỗ nhắc. Chương 1 và 2 không còn cảnh báo.
 - Bảng Nielsen đối chiếu với giao diện hiện tại ngày 07/11. 25 ca kiểm thử chạy trên app thật ngày 07/11, TC25 kiểm trực tiếp trên kho.
 - Script `ve_hinh_mohinh.py` sau khi bỏ hai hình không dùng vẫn sinh ra các hình còn lại giống hệt (so md5).
 - Sau khi gom script vào thư mục con (07/11): 7 script `phan_tich/` nạp được `config`, `models_def` và trỏ đúng gốc repo. 10 script `bao_cao/` chạy lại từ chỗ mới, 76 file trong `latex/bang/`, `latex/IMAGE/`, `docs/ho_so_companyx/IMAGE/` giống hệt trước khi chuyển (so md5). Các script `cum*` và notebook chưa chạy lại toàn bộ vì cần kho và mất thời gian, chỉ kiểm phần đường dẫn.
